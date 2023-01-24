@@ -13,6 +13,7 @@ final class BoardGameViewController: UIViewController {
 
     private var boardGameViewModel: BoardGameViewModel!
     private var searchController: UISearchController!
+    private var cellIdentifier = "gameCell"
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
@@ -25,8 +26,6 @@ final class BoardGameViewController: UIViewController {
         configureViewModel()
         configureTableView()
         configureSearchBar()
-
-
     }
 
 }
@@ -46,35 +45,58 @@ private extension BoardGameViewController {
 
     func configureSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Boardgames"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
 
+    func showError(_ error: Error) {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
+            self.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(alertAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
 }
 
-extension BoardGameViewController: UISearchResultsUpdating{
+// MARK:- UISearchResultsUpdating
+
+extension BoardGameViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchString = searchController.searchBar.text,
               searchString.isEmpty == false else { return }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { [weak self] in
-            self?.activityIndicatorView.startAnimating()
-
-            self?.boardGameViewModel.getGames(searchString: searchString.trimmingCharacters(in: .whitespacesAndNewlines)) { [weak self] in
-                // refresh table
-                DispatchQueue.main.async {
-                    self?.activityIndicatorView.stopAnimating()
-                    self?.tableView.reloadData()
-                }
+        Task { [weak self] in
+            do {
+                self?.activityIndicatorView.startAnimating()
+                try await boardGameViewModel.getGames(searchString: searchString)
+                self?.activityIndicatorView.stopAnimating()
+                self?.tableView.reloadData()
+            } catch {
+                self?.searchController.searchBar.text = ""
+                self?.activityIndicatorView.stopAnimating()
+                showError(error)
             }
         }
-
     }
 
+}
+
+// MARK:- UISearchBarDelegate
+
+extension BoardGameViewController: UISearchBarDelegate {
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        boardGameViewModel.boardGames = []
+        tableView.reloadData()
+    }
 }
 
 // MARK:- UITableViewDataSource
@@ -90,7 +112,7 @@ extension BoardGameViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "gameCell", for: indexPath) as! BoardGameTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BoardGameTableViewCell
         cell.configure(
             title: boardGameViewModel.getTitle(row: indexPath.row),
             year: boardGameViewModel.getYear(row: indexPath.row)

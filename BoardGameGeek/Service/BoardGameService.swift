@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BoardGameServiceProtocol {
-    func getBoardGames(url: URL, completion: @escaping(Result<[BoardGame], NetworkError>) -> Void)
+    func getBoardGames(url: URL) async throws -> [BoardGame]
 }
 
 enum NetworkError: Error {
@@ -30,25 +30,21 @@ final class BoardGameService: NSObject {
 
 extension BoardGameService: BoardGameServiceProtocol {
 
-    func getBoardGames(
-        url: URL,
-        completion: @escaping(Result<[BoardGame], NetworkError>
-        ) -> Void) {
-        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
-            guard let data = data else {
-                if let error = error as NSError?, error.domain == NSURLErrorDomain {
-                    completion(.failure(.domainError(error.localizedDescription)))
-                }
-                return
-            }
+    func getBoardGames(url: URL) async throws -> [BoardGame] {
+        let searchTask = Task { () in
+            if Task.isCancelled { return }
+
+            let session = URLSession.shared
+            let (data, _) = try await session.data(from: url)
 
             var parser = XMLParser()
             parser = XMLParser(data: data)
             parser.delegate = self
             parser.parse()
-            completion(.success(self?.boardGames ?? []))
+        }
 
-        }.resume()
+        try await searchTask.value
+        return boardGames
     }
 }
 
@@ -91,10 +87,6 @@ extension BoardGameService:  XMLParserDelegate {
             boardGames[boardGames.count - 1].yearPublished = currentValue
         }
         currentValue = ""
-    }
-
-    func parserDidEndDocument(_ parser: XMLParser) {
-        print(boardGames)
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String) {

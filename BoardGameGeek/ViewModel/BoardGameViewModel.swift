@@ -19,20 +19,18 @@ final public class BoardGameViewModel {
 
 extension BoardGameViewModel {
 
-    func getGames(searchString: String, completion: @escaping () -> Void){
-        
-        guard let url = URL(string: "https://api.geekdo.com/xmlapi/search?search=zombicide") else {
-            return
+    func getGames(searchString: String) async throws {
+        boardGames = []
+        let baseURL = "https://api.geekdo.com/xmlapi/search?search="
+        guard let url = URL(string: baseURL + searchString) else {
+            throw NetworkError.badURL
         }
-        
-        boardGameEndPoint.getBoardGames(url: url){ [weak self] result in
-            switch result {
-            case .success(let games):
-                self?.boardGames = games
-                completion()
-            case .failure(let error):
-                print(error)
-            }
+
+        do {
+            boardGames = try await boardGameEndPoint.getBoardGames(url: url)
+        } catch {
+            // handle error
+            print("error")
         }
     }
 
