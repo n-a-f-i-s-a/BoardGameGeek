@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
-		78E3EC48297FA56600A56B65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* ViewController.swift */; };
+		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
 		78E3EC4B297FA56600A56B65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E3EC49297FA56600A56B65 /* Main.storyboard */; };
 		78E3EC4D297FA56700A56B65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E3EC4C297FA56700A56B65 /* Assets.xcassets */; };
 		78E3EC50297FA56700A56B65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E3EC4E297FA56700A56B65 /* LaunchScreen.storyboard */; };
+		78E3EC59297FA6C200A56B65 /* BoardGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC58297FA6C200A56B65 /* BoardGameViewModel.swift */; };
+		78E3EC5C297FA71D00A56B65 /* BoardGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */; };
+		78E3EC60297FA9BD00A56B65 /* BoardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */; };
+		78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		78E3EC47297FA56600A56B65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		78E3EC47297FA56600A56B65 /* BoardGameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameController.swift; sourceTree = "<group>"; };
 		78E3EC4A297FA56600A56B65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78E3EC4C297FA56700A56B65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78E3EC4F297FA56700A56B65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78E3EC51297FA56700A56B65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78E3EC58297FA6C200A56B65 /* BoardGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameViewModel.swift; sourceTree = "<group>"; };
+		78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameService.swift; sourceTree = "<group>"; };
+		78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGame.swift; sourceTree = "<group>"; };
+		78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,51 @@
 		78E3EC42297FA56600A56B65 /* BoardGameGeek */ = {
 			isa = PBXGroup;
 			children = (
+				78E3EC5E297FA9A300A56B65 /* Model */,
+				78E3EC5A297FA6FB00A56B65 /* Service */,
+				78E3EC57297FA69B00A56B65 /* ViewModel */,
 				78E3EC43297FA56600A56B65 /* AppDelegate.swift */,
 				78E3EC45297FA56600A56B65 /* SceneDelegate.swift */,
-				78E3EC47297FA56600A56B65 /* ViewController.swift */,
+				78E3EC5D297FA85500A56B65 /* View */,
 				78E3EC49297FA56600A56B65 /* Main.storyboard */,
 				78E3EC4C297FA56700A56B65 /* Assets.xcassets */,
 				78E3EC4E297FA56700A56B65 /* LaunchScreen.storyboard */,
 				78E3EC51297FA56700A56B65 /* Info.plist */,
 			);
 			path = BoardGameGeek;
+			sourceTree = "<group>";
+		};
+		78E3EC57297FA69B00A56B65 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC58297FA6C200A56B65 /* BoardGameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		78E3EC5A297FA6FB00A56B65 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		78E3EC5D297FA85500A56B65 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC47297FA56600A56B65 /* BoardGameController.swift */,
+				78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		78E3EC5E297FA9A300A56B65 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +182,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E3EC48297FA56600A56B65 /* ViewController.swift in Sources */,
+				78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */,
+				78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */,
+				78E3EC59297FA6C200A56B65 /* BoardGameViewModel.swift in Sources */,
 				78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */,
 				78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */,
+				78E3EC60297FA9BD00A56B65 /* BoardGame.swift in Sources */,
+				78E3EC5C297FA71D00A56B65 /* BoardGameService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
