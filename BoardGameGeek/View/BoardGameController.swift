@@ -34,6 +34,12 @@ final class BoardGameViewController: UIViewController {
         searchController.searchBar.resignFirstResponder()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        searchController.searchBar.resignFirstResponder()
+    }
+
 }
 
 private extension BoardGameViewController {
@@ -81,6 +87,7 @@ extension BoardGameViewController: UISearchResultsUpdating {
 
         Task { [weak self] in
             do {
+                try await Task.sleep(for: .seconds(1)) //debounce
                 self?.activityIndicatorView.startAnimating()
                 self?.tableView.isUserInteractionEnabled = false
                 try await boardGameViewModel.getGames(searchString: searchString)
