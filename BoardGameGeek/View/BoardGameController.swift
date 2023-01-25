@@ -28,6 +28,12 @@ final class BoardGameViewController: UIViewController {
         configureSearchBar()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchController.searchBar.resignFirstResponder()
+    }
+
 }
 
 private extension BoardGameViewController {
@@ -76,12 +82,15 @@ extension BoardGameViewController: UISearchResultsUpdating {
         Task { [weak self] in
             do {
                 self?.activityIndicatorView.startAnimating()
+                self?.tableView.isUserInteractionEnabled = false
                 try await boardGameViewModel.getGames(searchString: searchString)
                 self?.activityIndicatorView.stopAnimating()
+                self?.tableView.isUserInteractionEnabled = true
                 self?.tableView.reloadData()
             } catch {
                 self?.searchController.searchBar.text = ""
                 self?.activityIndicatorView.stopAnimating()
+                self?.tableView.isUserInteractionEnabled = true
                 showError(error)
             }
         }
@@ -96,6 +105,12 @@ extension BoardGameViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         boardGameViewModel.boardGames = []
         tableView.reloadData()
+        self.activityIndicatorView.stopAnimating()
+        searchController.searchBar.endEditing(true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController.searchBar.endEditing(true)
     }
 }
 
