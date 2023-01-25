@@ -13,19 +13,51 @@ protocol BoardGameServiceProtocol {
 
 enum NetworkError: Error {
     case badURL
-    case domainError(String)
+    case badRequest
+    case serverError
+    case unknown
 }
 
-
 final class BoardGameService: NSObject {
-    var content = [String : String]()
-    var boardGames = [BoardGame]()
-    var currentValue = ""
+    // MARK: - properties
+
+    var content: [String : String]
+    var boardGames: [BoardGame]
+    var currentValue: String
 
 
     override init() {
-        
+        content = [String : String]()
+        boardGames = [BoardGame]()
+        currentValue = ""
     }
+}
+
+private extension BoardGameService {
+
+    func verifyResponse(response: URLResponse) throws {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NetworkError.unknown
+        }
+        switch httpResponse.statusCode {
+        case 200...299:
+            break
+        case 400...499:
+            throw NetworkError.badRequest
+        case 500...599:
+            throw NetworkError.serverError
+        default:
+            throw NetworkError.unknown
+        }
+    }
+
+    private func parseSearchResult(data: Data) {
+        var parser = XMLParser()
+        parser = XMLParser(data: data)
+        parser.delegate = self
+        parser.parse()
+    }
+
 }
 
 extension BoardGameService: BoardGameServiceProtocol {
@@ -35,18 +67,18 @@ extension BoardGameService: BoardGameServiceProtocol {
             if Task.isCancelled { return }
 
             let session = URLSession.shared
-            let (data, _) = try await session.data(from: url)
+            let (data, response) = try await session.data(from: url)
 
-            var parser = XMLParser()
-            parser = XMLParser(data: data)
-            parser.delegate = self
-            parser.parse()
+            try verifyResponse(response: response)
+            parseSearchResult(data: data)
         }
 
         try await searchTask.value
         return boardGames
     }
 }
+
+// MARK: - XMLParserDelegate
 
 extension BoardGameService:  XMLParserDelegate {
 

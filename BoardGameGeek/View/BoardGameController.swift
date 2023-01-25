@@ -30,12 +30,12 @@ final class BoardGameViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
+
         searchController.searchBar.resignFirstResponder()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillAppear(animated)
 
         searchController.searchBar.resignFirstResponder()
     }
@@ -45,13 +45,13 @@ final class BoardGameViewController: UIViewController {
 private extension BoardGameViewController {
 
     func configureViewModel() {
-        boardGameViewModel = BoardGameViewModel(boardGameEndPoint: BoardGameService())
+        boardGameViewModel = BoardGameViewModel(boardGameService: BoardGameService())
     }
 
     func configureTableView() {
         tableView.dataSource = self
         //tableView.delegate = self
-        self.tableView.estimatedRowHeight = 88.0
+        self.tableView.estimatedRowHeight = 100.0
         self.tableView.rowHeight = UITableView.automaticDimension
     }
 

@@ -8,11 +8,13 @@
 import Foundation
 
 final public class BoardGameViewModel {
-    let boardGameEndPoint: BoardGameServiceProtocol
+    // MARK: - properties
+    
+    let boardGameService: BoardGameServiceProtocol
     var boardGames: [BoardGame]
 
-    init(boardGameEndPoint: BoardGameServiceProtocol) {
-        self.boardGameEndPoint = boardGameEndPoint
+    init(boardGameService: BoardGameServiceProtocol) {
+        self.boardGameService = boardGameService
         self.boardGames = []
     }
 }
@@ -27,10 +29,9 @@ extension BoardGameViewModel {
         }
 
         do {
-            boardGames = try await boardGameEndPoint.getBoardGames(url: url)
+            boardGames = try await boardGameService.getBoardGames(url: url)
         } catch {
-            // handle error
-            print("error")
+            throw error
         }
     }
 
@@ -46,10 +47,16 @@ public extension BoardGameViewModel {
     }
 
     func getTitle(row: Int) -> String {
+        guard boardGames.isEmpty == false else { return "" }
         return boardGames[row].name
     }
 
     func getYear(row: Int) -> String {
+        guard boardGames.isEmpty == false else { return "" }
+
+        if boardGames[row].yearPublished.isEmpty {
+            return ""
+        }
         return "Year Published: " + boardGames[row].yearPublished
     }
 
