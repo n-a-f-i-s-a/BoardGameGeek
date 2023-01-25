@@ -58,7 +58,6 @@ private extension BoardGameViewController {
     func configureSearchBar() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
-        searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Boardgames"
@@ -77,17 +76,23 @@ private extension BoardGameViewController {
 
 }
 
-// MARK:- UISearchResultsUpdating
+// MARK:- UISearchBarDelegate
 
-extension BoardGameViewController: UISearchResultsUpdating {
+extension BoardGameViewController: UISearchBarDelegate {
 
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        boardGameViewModel.boardGames = []
+        tableView.reloadData()
+        self.activityIndicatorView.stopAnimating()
+        searchController.searchBar.endEditing(true)
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchString = searchController.searchBar.text,
               searchString.isEmpty == false else { return }
 
         Task { [weak self] in
             do {
-                try await Task.sleep(for: .seconds(1)) //debounce
                 self?.activityIndicatorView.startAnimating()
                 self?.tableView.isUserInteractionEnabled = false
                 try await boardGameViewModel.getGames(searchString: searchString)
@@ -101,22 +106,7 @@ extension BoardGameViewController: UISearchResultsUpdating {
                 showError(error)
             }
         }
-    }
 
-}
-
-// MARK:- UISearchBarDelegate
-
-extension BoardGameViewController: UISearchBarDelegate {
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        boardGameViewModel.boardGames = []
-        tableView.reloadData()
-        self.activityIndicatorView.stopAnimating()
-        searchController.searchBar.endEditing(true)
-    }
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchController.searchBar.endEditing(true)
     }
 }
