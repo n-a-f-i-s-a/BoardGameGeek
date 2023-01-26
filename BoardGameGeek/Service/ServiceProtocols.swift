@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+protocol ParserProtocol {
+    func parseResult(data: Data) -> BoardGameService.Result
+}
+
+protocol BoardGameServiceProtocol {
+    func getData(url: URL) async throws -> BoardGameService.Result
+}

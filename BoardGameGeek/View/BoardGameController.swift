@@ -45,7 +45,7 @@ final class BoardGameViewController: UIViewController {
 private extension BoardGameViewController {
 
     func configureViewModel() {
-        boardGameViewModel = BoardGameViewModel(boardGameService: BoardGameService())
+        boardGameViewModel = BoardGameViewModel(boardGameService: BoardGameService(parser: SearchResultParser()))
     }
 
     func configureTableView() {
@@ -109,6 +109,7 @@ extension BoardGameViewController: UISearchBarDelegate {
 
         searchController.searchBar.endEditing(true)
     }
+
 }
 
 // MARK:- UITableViewDataSource

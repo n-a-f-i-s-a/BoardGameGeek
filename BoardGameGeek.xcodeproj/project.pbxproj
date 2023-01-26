@@ -17,6 +17,8 @@
 		78E3EC5C297FA71D00A56B65 /* BoardGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */; };
 		78E3EC60297FA9BD00A56B65 /* BoardGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */; };
 		78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */; };
+		78E3EC642981F71100A56B65 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC632981F71100A56B65 /* SearchResultParser.swift */; };
+		78E3EC662981FC3800A56B65 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC652981FC3800A56B65 /* ServiceProtocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameService.swift; sourceTree = "<group>"; };
 		78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGame.swift; sourceTree = "<group>"; };
 		78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameTableViewCell.swift; sourceTree = "<group>"; };
+		78E3EC632981F71100A56B65 /* SearchResultParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
+		78E3EC652981FC3800A56B65 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */,
+				78E3EC632981F71100A56B65 /* SearchResultParser.swift */,
+				78E3EC652981FC3800A56B65 /* ServiceProtocols.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				78E3EC59297FA6C200A56B65 /* BoardGameViewModel.swift in Sources */,
 				78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */,
 				78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */,
+				78E3EC642981F71100A56B65 /* SearchResultParser.swift in Sources */,
+				78E3EC662981FC3800A56B65 /* ServiceProtocols.swift in Sources */,
 				78E3EC60297FA9BD00A56B65 /* BoardGame.swift in Sources */,
 				78E3EC5C297FA71D00A56B65 /* BoardGameService.swift in Sources */,
 			);

@@ -25,11 +25,14 @@ extension BoardGameViewModel {
         boardGames = []
         let baseURL = "https://api.geekdo.com/xmlapi/search?search="
         guard let url = URL(string: baseURL + searchString) else {
-            throw NetworkError.badURL
+            throw BoardGameService.NetworkError.badURL
         }
 
         do {
-            boardGames = try await boardGameService.getBoardGames(url: url)
+            let result = try await boardGameService.getData(url: url)
+            if case let .list(boardGames) = result {
+                self.boardGames = boardGames
+            }
         } catch {
             throw error
         }
