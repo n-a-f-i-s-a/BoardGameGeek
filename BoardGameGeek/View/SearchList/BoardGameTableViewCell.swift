@@ -19,6 +19,7 @@ final class BoardGameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.accessoryType = .disclosureIndicator
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

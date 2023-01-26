@@ -14,7 +14,7 @@ final class BoardGameService {
 
     enum Result {
         case list([BoardGame])
-        case detail
+        case detail(BoardGameDetails)
         case empty
     }
 
@@ -71,4 +71,5 @@ extension BoardGameService: BoardGameServiceProtocol {
         let result = try await networkTask.value
         return result
     }
+
 }

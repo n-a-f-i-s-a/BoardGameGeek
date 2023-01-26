@@ -15,6 +15,7 @@ final class BoardGameViewController: UIViewController {
 
     // MARK: - properties
 
+    private var storyBoardName: String = "Main"
     private var boardGameViewModel: BoardGameViewModel!
     private var searchController: UISearchController!
     private lazy var dataSource = configureDataSource()
@@ -54,7 +55,7 @@ private extension BoardGameViewController {
 
     func configureTableView() {
         tableView.dataSource = dataSource
-        //tableView.delegate = self
+        tableView.delegate = self
         self.tableView.estimatedRowHeight = 100.0
         self.tableView.rowHeight = UITableView.automaticDimension
     }
@@ -144,6 +145,19 @@ private extension BoardGameViewController {
                 return cell
             }
         )
+    }
+
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension BoardGameViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextViewController = DetailViewController.instantiateFromStoryboard(storyboardName: storyBoardName)
+        nextViewController.objectID = boardGameViewModel.selectItem(row: indexPath.row)
+        self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 
 }

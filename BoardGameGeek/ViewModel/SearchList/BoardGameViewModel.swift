@@ -45,6 +45,14 @@ extension BoardGameViewModel {
         }
     }
 
+    func selectItem(row: Int) -> String? {
+        if boardGames.indices.contains(row) {
+            return boardGames[row].objectid
+        }
+
+        return nil
+    }
+
 }
 
 extension BoardGameViewModel {

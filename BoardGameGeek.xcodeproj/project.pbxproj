@@ -19,6 +19,11 @@
 		78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */; };
 		78E3EC642981F71100A56B65 /* SearchResultParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC632981F71100A56B65 /* SearchResultParser.swift */; };
 		78E3EC662981FC3800A56B65 /* ServiceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC652981FC3800A56B65 /* ServiceProtocols.swift */; };
+		78E3EC6E29833D7900A56B65 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC6D29833D7900A56B65 /* DetailViewController.swift */; };
+		78E3EC7029833D8E00A56B65 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC6F29833D8E00A56B65 /* DetailViewModel.swift */; };
+		78E3EC7229833DD500A56B65 /* BoardGameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC7129833DD500A56B65 /* BoardGameDetails.swift */; };
+		78E3EC74298363A200A56B65 /* DetailParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC73298363A200A56B65 /* DetailParser.swift */; };
+		78E3EC762983836C00A56B65 /* StoryboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC752983836C00A56B65 /* StoryboardProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameTableViewCell.swift; sourceTree = "<group>"; };
 		78E3EC632981F71100A56B65 /* SearchResultParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultParser.swift; sourceTree = "<group>"; };
 		78E3EC652981FC3800A56B65 /* ServiceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocols.swift; sourceTree = "<group>"; };
+		78E3EC6D29833D7900A56B65 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		78E3EC6F29833D8E00A56B65 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		78E3EC7129833DD500A56B65 /* BoardGameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameDetails.swift; sourceTree = "<group>"; };
+		78E3EC73298363A200A56B65 /* DetailParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailParser.swift; sourceTree = "<group>"; };
+		78E3EC752983836C00A56B65 /* StoryboardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +95,8 @@
 		78E3EC57297FA69B00A56B65 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				78E3EC58297FA6C200A56B65 /* BoardGameViewModel.swift */,
+				78E3EC6A29833D1900A56B65 /* Detail */,
+				78E3EC6929833D0E00A56B65 /* SearchList */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -96,6 +107,7 @@
 				78E3EC5B297FA71D00A56B65 /* BoardGameService.swift */,
 				78E3EC632981F71100A56B65 /* SearchResultParser.swift */,
 				78E3EC652981FC3800A56B65 /* ServiceProtocols.swift */,
+				78E3EC73298363A200A56B65 /* DetailParser.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -103,8 +115,9 @@
 		78E3EC5D297FA85500A56B65 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				78E3EC47297FA56600A56B65 /* BoardGameController.swift */,
-				78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */,
+				78E3EC6829833D0200A56B65 /* Detail */,
+				78E3EC6729833CF200A56B65 /* SearchList */,
+				78E3EC752983836C00A56B65 /* StoryboardProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -112,9 +125,59 @@
 		78E3EC5E297FA9A300A56B65 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */,
+				78E3EC6C29833D3400A56B65 /* Detail */,
+				78E3EC6B29833D2C00A56B65 /* SearchList */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		78E3EC6729833CF200A56B65 /* SearchList */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC61297FF41600A56B65 /* BoardGameTableViewCell.swift */,
+				78E3EC47297FA56600A56B65 /* BoardGameController.swift */,
+			);
+			path = SearchList;
+			sourceTree = "<group>";
+		};
+		78E3EC6829833D0200A56B65 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC6D29833D7900A56B65 /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		78E3EC6929833D0E00A56B65 /* SearchList */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC58297FA6C200A56B65 /* BoardGameViewModel.swift */,
+			);
+			path = SearchList;
+			sourceTree = "<group>";
+		};
+		78E3EC6A29833D1900A56B65 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC6F29833D8E00A56B65 /* DetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		78E3EC6B29833D2C00A56B65 /* SearchList */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC5F297FA9BD00A56B65 /* BoardGame.swift */,
+			);
+			path = SearchList;
+			sourceTree = "<group>";
+		};
+		78E3EC6C29833D3400A56B65 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				78E3EC7129833DD500A56B65 /* BoardGameDetails.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,10 +255,15 @@
 				78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */,
 				78E3EC59297FA6C200A56B65 /* BoardGameViewModel.swift in Sources */,
 				78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */,
+				78E3EC74298363A200A56B65 /* DetailParser.swift in Sources */,
 				78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */,
+				78E3EC762983836C00A56B65 /* StoryboardProtocol.swift in Sources */,
+				78E3EC7229833DD500A56B65 /* BoardGameDetails.swift in Sources */,
 				78E3EC642981F71100A56B65 /* SearchResultParser.swift in Sources */,
 				78E3EC662981FC3800A56B65 /* ServiceProtocols.swift in Sources */,
+				78E3EC6E29833D7900A56B65 /* DetailViewController.swift in Sources */,
 				78E3EC60297FA9BD00A56B65 /* BoardGame.swift in Sources */,
+				78E3EC7029833D8E00A56B65 /* DetailViewModel.swift in Sources */,
 				78E3EC5C297FA71D00A56B65 /* BoardGameService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
