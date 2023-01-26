@@ -8,11 +8,20 @@
 import Foundation
 
 final public class BoardGameViewModel {
-    let boardGameEndPoint: BoardGameServiceProtocol
+
+    // MARK: - Type
+
+    enum Section: CaseIterable {
+        case basicInfo
+    }
+
+    // MARK: - properties
+
+    let boardGameService: BoardGameServiceProtocol
     var boardGames: [BoardGame]
 
-    init(boardGameEndPoint: BoardGameServiceProtocol) {
-        self.boardGameEndPoint = boardGameEndPoint
+    init(boardGameService: BoardGameServiceProtocol) {
+        self.boardGameService = boardGameService
         self.boardGames = []
     }
 }
@@ -23,34 +32,27 @@ extension BoardGameViewModel {
         boardGames = []
         let baseURL = "https://api.geekdo.com/xmlapi/search?search="
         guard let url = URL(string: baseURL + searchString) else {
-            throw NetworkError.badURL
+            throw BoardGameService.NetworkError.badURL
         }
 
         do {
-            boardGames = try await boardGameEndPoint.getBoardGames(url: url)
+            let result = try await boardGameService.getData(url: url)
+            if case let .list(boardGames) = result {
+                self.boardGames = boardGames
+            }
         } catch {
-            // handle error
-            print("error")
+            throw error
         }
     }
 
 }
 
-public extension BoardGameViewModel {
-    func getNumberOfSections() -> Int {
-        return 1
-    }
+extension BoardGameViewModel {
 
-    func getNumberOfRows() -> Int {
-        return boardGames.count
-    }
-
-    func getTitle(row: Int) -> String {
-        return boardGames[row].name
-    }
-
-    func getYear(row: Int) -> String {
-        return "Year Published: " + boardGames[row].yearPublished
+    func getYear(boardGame: BoardGame) -> String {
+        boardGame.yearPublished.isEmpty
+        ? ""
+        : "Year Published: " + boardGame.yearPublished
     }
 
 }

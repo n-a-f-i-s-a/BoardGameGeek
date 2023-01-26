@@ -9,6 +9,10 @@ import UIKit
 
 final class BoardGameTableViewCell: UITableViewCell {
 
+    // MARK: - properties
+
+    static let reuseIdentifer = "gameCell"
+    
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var yearLabel: UILabel!
 
@@ -23,9 +27,18 @@ final class BoardGameTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    override func prepareForReuse() {
+        self.yearLabel.isHidden = false
+    }
+
     func configure(title: String, year: String) {
         self.titleLabel.text = title
-        self.yearLabel.text = year
+    
+        if year.isEmpty == false {
+            self.yearLabel.text = year
+        } else {
+            self.yearLabel.isHidden = true
+        }
     }
 
 }

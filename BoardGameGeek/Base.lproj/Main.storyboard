@@ -20,25 +20,25 @@
                                 <rect key="frame" x="0.0" y="123" width="393" height="695"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameCell" rowHeight="68" id="Dl9-mg-rpW" customClass="BoardGameTableViewCell" customModule="BoardGameGeek" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="68"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gameCell" rowHeight="100" id="Dl9-mg-rpW" customClass="BoardGameTableViewCell" customModule="BoardGameGeek" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dl9-mg-rpW" id="Feu-4l-f8b">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="68"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GBu-NG-umh">
-                                                    <rect key="frame" x="20" y="0.0" width="353" height="68"/>
+                                                    <rect key="frame" x="20" y="20" width="353" height="60"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y69-wd-oxQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y69-wd-oxQ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="353" height="33.666666666666664"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgJ-Va-xwA">
-                                                            <rect key="frame" x="0.0" y="30.333333333333332" width="353" height="37.666666666666671"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OgJ-Va-xwA">
+                                                            <rect key="frame" x="0.0" y="43.666666666666664" width="353" height="16.333333333333336"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -47,8 +47,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="GBu-NG-umh" secondAttribute="trailing" constant="20" id="3xu-db-c7l"/>
-                                                <constraint firstAttribute="bottom" secondItem="GBu-NG-umh" secondAttribute="bottom" id="ZDN-3b-tTG"/>
-                                                <constraint firstItem="GBu-NG-umh" firstAttribute="top" secondItem="Feu-4l-f8b" secondAttribute="top" id="jjm-Q5-fgv"/>
+                                                <constraint firstAttribute="bottom" secondItem="GBu-NG-umh" secondAttribute="bottom" constant="20" id="ZDN-3b-tTG"/>
+                                                <constraint firstItem="GBu-NG-umh" firstAttribute="top" secondItem="Feu-4l-f8b" secondAttribute="top" constant="20" id="jjm-Q5-fgv"/>
                                                 <constraint firstItem="GBu-NG-umh" firstAttribute="leading" secondItem="Feu-4l-f8b" secondAttribute="leading" constant="20" id="yEV-kB-6Q8"/>
                                             </constraints>
                                         </tableViewCellContentView>
