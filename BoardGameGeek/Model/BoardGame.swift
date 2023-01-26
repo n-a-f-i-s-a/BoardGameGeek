@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BoardGame {
+struct BoardGame: Hashable {
     var objectid: String
     var name: String
     var yearPublished: String

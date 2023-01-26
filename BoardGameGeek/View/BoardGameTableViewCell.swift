@@ -10,6 +10,8 @@ import UIKit
 final class BoardGameTableViewCell: UITableViewCell {
 
     // MARK: - properties
+
+    static let reuseIdentifer = "gameCell"
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var yearLabel: UILabel!

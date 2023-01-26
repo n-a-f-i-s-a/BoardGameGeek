@@ -8,8 +8,15 @@
 import Foundation
 
 final public class BoardGameViewModel {
+
+    // MARK: - Type
+
+    enum Section: CaseIterable {
+        case basicInfo
+    }
+
     // MARK: - properties
-    
+
     let boardGameService: BoardGameServiceProtocol
     var boardGames: [BoardGame]
 
@@ -40,27 +47,12 @@ extension BoardGameViewModel {
 
 }
 
-public extension BoardGameViewModel {
-    func getNumberOfSections() -> Int {
-        return 1
-    }
+extension BoardGameViewModel {
 
-    func getNumberOfRows() -> Int {
-        return boardGames.count
-    }
-
-    func getTitle(row: Int) -> String {
-        guard boardGames.isEmpty == false else { return "" }
-        return boardGames[row].name
-    }
-
-    func getYear(row: Int) -> String {
-        guard boardGames.isEmpty == false else { return "" }
-
-        if boardGames[row].yearPublished.isEmpty {
-            return ""
-        }
-        return "Year Published: " + boardGames[row].yearPublished
+    func getYear(boardGame: BoardGame) -> String {
+        boardGame.yearPublished.isEmpty
+        ? ""
+        : "Year Published: " + boardGame.yearPublished
     }
 
 }

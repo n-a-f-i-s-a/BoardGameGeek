@@ -9,12 +9,16 @@ import UIKit
 
 final class BoardGameViewController: UIViewController {
 
+    // MARK: - Type
+
+    typealias Section = BoardGameViewModel.Section
+
     // MARK: - properties
 
     private var boardGameViewModel: BoardGameViewModel!
     private var searchController: UISearchController!
-    private var cellIdentifier = "gameCell"
-    
+    private lazy var dataSource = configureDataSource()
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
 
@@ -49,7 +53,7 @@ private extension BoardGameViewController {
     }
 
     func configureTableView() {
-        tableView.dataSource = self
+        tableView.dataSource = dataSource
         //tableView.delegate = self
         self.tableView.estimatedRowHeight = 100.0
         self.tableView.rowHeight = UITableView.automaticDimension
@@ -82,7 +86,7 @@ extension BoardGameViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         boardGameViewModel.boardGames = []
-        tableView.reloadData()
+        self.update(with: boardGameViewModel.boardGames, animate: false)
         self.activityIndicatorView.stopAnimating()
         searchController.searchBar.endEditing(true)
     }
@@ -98,7 +102,8 @@ extension BoardGameViewController: UISearchBarDelegate {
                 try await boardGameViewModel.getGames(searchString: searchString)
                 self?.activityIndicatorView.stopAnimating()
                 self?.tableView.isUserInteractionEnabled = true
-                self?.tableView.reloadData()
+                self?.update(with: boardGameViewModel.boardGames, animate: false)
+
             } catch {
                 self?.searchController.searchBar.text = ""
                 self?.activityIndicatorView.stopAnimating()
@@ -112,25 +117,33 @@ extension BoardGameViewController: UISearchBarDelegate {
 
 }
 
-// MARK:- UITableViewDataSource
+// MARK: - datsource
 
-extension BoardGameViewController: UITableViewDataSource {
+private extension BoardGameViewController {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return boardGameViewModel.getNumberOfSections()
+    func update(with boardGames: [BoardGame], animate: Bool = true) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, BoardGame>()
+        snapshot.appendSections(Section.allCases)
+        snapshot.appendItems(boardGames, toSection: .basicInfo)
+
+        dataSource.apply(snapshot, animatingDifferences: animate)
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return boardGameViewModel.getNumberOfRows()
-    }
+    func configureDataSource() -> UITableViewDiffableDataSource<BoardGameViewModel.Section, BoardGame> {
+        return UITableViewDiffableDataSource<Section, BoardGame>(
+            tableView: tableView,
+            cellProvider: { [unowned self] tableView, indexPath, boardGame in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: BoardGameTableViewCell.reuseIdentifer,
+                    for: indexPath) as? BoardGameTableViewCell else { fatalError("Could not create new cell") }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! BoardGameTableViewCell
-        cell.configure(
-            title: boardGameViewModel.getTitle(row: indexPath.row),
-            year: boardGameViewModel.getYear(row: indexPath.row)
+                cell.configure(
+                    title: boardGame.name,
+                    year: self.boardGameViewModel.getYear(boardGame: boardGame)
+                )
+                return cell
+            }
         )
-        return cell
     }
-    
+
 }
