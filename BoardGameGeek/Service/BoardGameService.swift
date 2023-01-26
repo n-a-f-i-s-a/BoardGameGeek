@@ -66,7 +66,6 @@ extension BoardGameService: BoardGameServiceProtocol {
             try verifyResponse(response: response)
             guard let result = self?.parser.parseResult(data: data) else { return .empty }
             return result
-            
         }
         
         let result = try await networkTask.value
