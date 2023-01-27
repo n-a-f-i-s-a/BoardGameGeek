@@ -20,7 +20,7 @@ final class DetailParser: NSObject {
             objectid: "",
             name: "",
             yearPublished: "",
-            minPayer: 0,
+            minPlayer: 0,
             maxPlayer: 0,
             playingTime: 0,
             minPlayTime: 0,
@@ -73,7 +73,7 @@ extension DetailParser:  XMLParserDelegate {
         case "yearpublished":
             boardGameDetails.yearPublished = currentValue
         case "minplayers":
-            boardGameDetails.minPayer = Int(currentValue) ?? 0
+            boardGameDetails.minPlayer = Int(currentValue) ?? 0
         case "maxplayers":
             boardGameDetails.maxPlayer = Int(currentValue) ?? 0
         case "playingtime":
@@ -96,7 +96,7 @@ extension DetailParser:  XMLParserDelegate {
         default:
             break
         }
-        print("element \(elementName) : current val \(currentValue)")
+
         print(boardGameDetails)
 
         currentValue = ""

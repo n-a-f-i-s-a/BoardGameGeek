@@ -20,7 +20,6 @@ final public class DetailViewModel {
     
 }
 
-
 public extension DetailViewModel {
 
     func getGameDetails(objectID: String) async throws {
@@ -37,6 +36,66 @@ public extension DetailViewModel {
         } catch {
             throw error
         }
+    }
+
+}
+
+public extension DetailViewModel {
+
+    var name: String {
+        boardGameDetails?.name ?? "" // show name fetched from first api
+    }
+
+    var year: String {
+        boardGameDetails?.yearPublished ?? "" // show year fetched from first api
+    }
+
+    var description: String {
+        boardGameDetails?.description ?? "" // remove xml chars
+    }
+
+    var category: String {
+        guard let category = boardGameDetails?.boardGameCategory
+        else { return "" }
+
+        return "Category: " + String(category)
+    }
+
+    var isCategoryHidden: Bool {
+        category.isEmpty ? true : false
+    }
+
+    var publisher: String {
+        guard let publisher = boardGameDetails?.boardGamePublisher
+        else { return "" }
+
+        return "Publisher: " + String(publisher)
+    }
+
+    var ispublisherHidden: Bool {
+        publisher.isEmpty ? true : false
+    }
+
+    var minPlayer: String {
+        guard let minPlayer = boardGameDetails?.minPlayer
+        else { return "" }
+
+        return "Min Players: " + String(minPlayer)
+    }
+
+    var isMinPlayerHidden: Bool {
+        minPlayer.isEmpty ? true : false
+    }
+
+    var maxPlayer: String {
+        guard let maxPlayer = boardGameDetails?.maxPlayer
+        else { return "" }
+
+        return "Max Players: " + String(maxPlayer)
+    }
+
+    var isMaxPlayerHidden: Bool {
+        maxPlayer.isEmpty ? true : false
     }
 
 }

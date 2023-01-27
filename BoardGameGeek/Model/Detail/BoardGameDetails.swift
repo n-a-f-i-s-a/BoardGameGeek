@@ -11,7 +11,7 @@ struct BoardGameDetails {
     var objectid: String
     var name: String
     var yearPublished: String
-    var minPayer: Int
+    var minPlayer: Int
     var maxPlayer: Int
     var playingTime: Int
     var minPlayTime: Int
