@@ -38,6 +38,16 @@ public extension DetailViewModel {
         }
     }
 
+    func getImageData(url: URL) async throws -> Data {
+        do {
+            return try await boardGameService.getImageData(url: url)
+
+        } catch {
+            throw error
+        }
+    }
+
+
 }
 
 public extension DetailViewModel {
@@ -96,6 +106,16 @@ public extension DetailViewModel {
 
     var isMaxPlayerHidden: Bool {
         maxPlayer.isEmpty ? true : false
+    }
+
+    var imageURL: URL? {
+        guard let imageURL = boardGameDetails?.imageURL,
+              let url = URL(string: imageURL ) else { return nil }
+        return url
+    }
+
+    var isImageHidden: Bool {
+        imageURL == nil ? true : false
     }
 
 }

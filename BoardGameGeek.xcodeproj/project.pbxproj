@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		780303102984DB9A00A0BA35 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */; };
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
 		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		78E3EC5D297FA85500A56B65 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */,
 				78E3EC6829833D0200A56B65 /* Detail */,
 				78E3EC6729833CF200A56B65 /* SearchList */,
 				78E3EC752983836C00A56B65 /* StoryboardProtocol.swift */,
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780303102984DB9A00A0BA35 /* RoundedImageView.swift in Sources */,
 				78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */,
 				78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */,
 				78E3EC59297FA6C200A56B65 /* BoardGameViewModel.swift in Sources */,

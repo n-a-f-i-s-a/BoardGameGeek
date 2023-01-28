@@ -38,6 +38,10 @@ final public class DetailViewController: UIViewController {
         fetchGameDetails()
     }
 
+    public override func viewWillAppear(_ animated: Bool) {
+        imageView.isHidden = true
+    }
+
 }
 
 private extension DetailViewController {
@@ -49,14 +53,15 @@ private extension DetailViewController {
     func fetchGameDetails() {
         Task { [weak self] in
             do {
-                    self?.activityIndicatorView.startAnimating()
-                // disable back button
+                self?.activityIndicatorView.startAnimating()
+                navigationItem.hidesBackButton = true
 
                 guard let objectID = objectID else { return }
-                 try await detailViewModel.getGameDetails(objectID: objectID)
+                try await detailViewModel.getGameDetails(objectID: objectID)
                 showDetails()
-                 self?.activityIndicatorView.stopAnimating()
-                 // enable back button
+
+                self?.activityIndicatorView.stopAnimating()
+                navigationItem.hidesBackButton = false
             } catch {
                 print(error) // handle later
             }
@@ -77,6 +82,22 @@ private extension DetailViewController {
         categoryLabel.isHidden = detailViewModel.isCategoryHidden
         publisherLabel.text = detailViewModel.publisher
         publisherLabel.isHidden = detailViewModel.ispublisherHidden
+
+        showImage()
+    }
+
+    func showImage() {
+        Task { [weak self] in
+            do {
+                if let imageURL = detailViewModel.imageURL {
+                   let imageData = try await detailViewModel.getImageData(url: imageURL)
+                    self?.imageView.image = UIImage(data: imageData)
+                    self?.imageView.isHidden = detailViewModel.isImageHidden
+                }
+            } catch {
+                // throw error
+            }
+        }
     }
     
 }

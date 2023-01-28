@@ -13,4 +13,5 @@ protocol ParserProtocol {
 
 protocol BoardGameServiceProtocol {
     func getData(url: URL) async throws -> BoardGameService.Result
+    func getImageData(url: URL) async throws -> Data
 }

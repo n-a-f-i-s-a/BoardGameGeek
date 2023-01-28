@@ -72,4 +72,10 @@ extension BoardGameService: BoardGameServiceProtocol {
         return result
     }
 
+    func getImageData(url: URL) async throws -> Data {
+        let session = URLSession.shared
+        let (data, _) = try await session.data(from: url)
+        return data
+    }
+
 }

@@ -20,4 +20,5 @@ struct BoardGameDetails {
     var description: String
     var boardGameCategory: String
     var boardGamePublisher: String
+    var imageURL: String
 }

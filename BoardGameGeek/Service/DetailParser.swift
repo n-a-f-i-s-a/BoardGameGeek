@@ -28,7 +28,8 @@ final class DetailParser: NSObject {
             age: 0,
             description: "",
             boardGameCategory: "",
-            boardGamePublisher: ""
+            boardGamePublisher: "",
+            imageURL: ""
         )
     }
 }
@@ -93,6 +94,8 @@ extension DetailParser:  XMLParserDelegate {
             boardGameDetails.boardGamePublisher = currentValue
         case "boardgamecategory":
             boardGameDetails.boardGameCategory = currentValue
+        case "image":
+            boardGameDetails.imageURL = currentValue
         default:
             break
         }

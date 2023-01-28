@@ -38,6 +38,9 @@ extension BoardGameViewModel {
         do {
             let result = try await boardGameService.getData(url: url)
             if case let .list(boardGames) = result {
+                if boardGames.isEmpty {
+                    // show oops message
+                }
                 self.boardGames = boardGames
             }
         } catch {
