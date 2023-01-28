@@ -12,6 +12,7 @@ final class BoardGameViewController: UIViewController {
     // MARK: - Type
 
     typealias Section = BoardGameViewModel.Section
+    typealias Item = BoardGameViewModel.Item
 
     // MARK: - properties
 
@@ -65,7 +66,7 @@ private extension BoardGameViewController {
         searchController.searchBar.delegate = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Boardgames"
+        searchController.searchBar.placeholder = "Search a boardgame"
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -79,6 +80,24 @@ private extension BoardGameViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+    func evaluateState() {
+        switch boardGameViewModel.state {
+        case .loading:
+            self.activityIndicatorView.startAnimating()
+            self.tableView.isUserInteractionEnabled = false
+        case .empty:
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.isUserInteractionEnabled = true
+            self.update(with: boardGameViewModel.boardGames, animate: false)
+        case .loaded:
+            self.activityIndicatorView.stopAnimating()
+            self.tableView.isUserInteractionEnabled = true
+            self.update(with: boardGameViewModel.boardGames, animate: false)
+        case .idle:
+            break
+        }
+    }
+
 }
 
 // MARK:- UISearchBarDelegate
@@ -87,6 +106,7 @@ extension BoardGameViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         boardGameViewModel.boardGames = []
+        boardGameViewModel.state = .idle
         self.update(with: boardGameViewModel.boardGames, animate: false)
         self.activityIndicatorView.stopAnimating()
         searchController.searchBar.endEditing(true)
@@ -98,13 +118,10 @@ extension BoardGameViewController: UISearchBarDelegate {
 
         Task { [weak self] in
             do {
-                self?.activityIndicatorView.startAnimating()
-                self?.tableView.isUserInteractionEnabled = false
+                boardGameViewModel.state = .loading
+                evaluateState()
                 try await boardGameViewModel.getGames(searchString: searchString)
-                self?.activityIndicatorView.stopAnimating()
-                self?.tableView.isUserInteractionEnabled = true
-                self?.update(with: boardGameViewModel.boardGames, animate: false)
-
+                evaluateState()
             } catch {
                 self?.searchController.searchBar.text = ""
                 self?.activityIndicatorView.stopAnimating()
@@ -123,27 +140,47 @@ extension BoardGameViewController: UISearchBarDelegate {
 private extension BoardGameViewController {
 
     func update(with boardGames: [BoardGame], animate: Bool = true) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, BoardGame>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections(Section.allCases)
-        snapshot.appendItems(boardGames, toSection: .basicInfo)
+
+        let allBoardGamesItems = boardGames.map { BoardGameViewModel.Item.boardGame($0)}
+        snapshot.appendItems(allBoardGamesItems, toSection: .basicInfo)
+
+        if boardGameViewModel.state == .empty {
+            snapshot.appendItems([BoardGameViewModel.Item.empty(1)], toSection: .empty)
+        }
 
         dataSource.apply(snapshot, animatingDifferences: animate)
     }
 
-    func configureDataSource() -> UITableViewDiffableDataSource<BoardGameViewModel.Section, BoardGame> {
-        return UITableViewDiffableDataSource<Section, BoardGame>(
+    func configureDataSource() -> UITableViewDiffableDataSource<Section, Item> {
+        return UITableViewDiffableDataSource<Section, Item>(
             tableView: tableView,
-            cellProvider: { [unowned self] tableView, indexPath, boardGame in
-                guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: BoardGameTableViewCell.reuseIdentifer,
-                    for: indexPath) as? BoardGameTableViewCell else { fatalError("Could not create new cell") }
+            cellProvider: { [unowned self] tableView, indexPath, boardGameItem in
 
-                cell.configure(
-                    title: boardGame.name,
-                    year: self.boardGameViewModel.getYear(boardGame: boardGame)
-                )
-                return cell
-            }
+                let sectionType = Section.allCases[indexPath.section]
+
+                switch sectionType {
+                case .basicInfo:
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: BoardGameTableViewCell.reuseIdentifer,
+                        for: indexPath) as? BoardGameTableViewCell else { fatalError("Could not create new cell") }
+
+                    if case let .boardGame(item) = boardGameItem {
+                        cell.configure(
+                            title: item.name,
+                            year: self.boardGameViewModel.getYear(boardGame: item)
+                        )
+                    }
+                    return cell
+                case .empty:
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: EmptyTableViewCell.reuseIdentifer,
+                        for: indexPath) as? EmptyTableViewCell else { fatalError("Could not create new cell") }
+
+                    return cell
+                }
+              }
         )
     }
 

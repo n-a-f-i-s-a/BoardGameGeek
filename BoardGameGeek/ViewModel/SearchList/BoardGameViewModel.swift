@@ -13,16 +13,31 @@ final public class BoardGameViewModel {
 
     enum Section: CaseIterable {
         case basicInfo
+        case empty
+    }
+
+    enum Item: Hashable {
+        case boardGame(BoardGame)
+        case empty(Int)
+    }
+
+    public enum State {
+        case idle
+        case loading
+        case loaded
+        case empty
     }
 
     // MARK: - properties
 
     let boardGameService: BoardGameServiceProtocol
     var boardGames: [BoardGame]
+    public var state: State
 
     init(boardGameService: BoardGameServiceProtocol) {
         self.boardGameService = boardGameService
         self.boardGames = []
+        self.state = .idle
     }
 }
 
@@ -30,6 +45,7 @@ extension BoardGameViewModel {
 
     func getGames(searchString: String) async throws {
         boardGames = []
+
         let baseURL = "https://api.geekdo.com/xmlapi/search?search="
         guard let url = URL(string: baseURL + searchString) else {
             throw BoardGameService.NetworkError.badURL
@@ -38,10 +54,12 @@ extension BoardGameViewModel {
         do {
             let result = try await boardGameService.getData(url: url)
             if case let .list(boardGames) = result {
-                if boardGames.isEmpty {
-                    // show oops message
+                if boardGames.isEmpty && state != .idle {
+                    state = .empty
+                } else {
+                    self.boardGames = boardGames
+                    state = .loaded
                 }
-                self.boardGames = boardGames
             }
         } catch {
             throw error
