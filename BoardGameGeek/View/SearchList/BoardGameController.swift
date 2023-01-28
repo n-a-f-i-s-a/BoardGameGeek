@@ -168,8 +168,10 @@ private extension BoardGameViewController {
 
                     if case let .boardGame(item) = boardGameItem {
                         cell.configure(
-                            title: item.name,
-                            year: self.boardGameViewModel.getYear(boardGame: item)
+                            boardGameCellViewModel: BoardGameCellViewModel(
+                                title: item.name,
+                                year: self.boardGameViewModel.getYear(boardGame: item)
+                            )
                         )
                     }
                     return cell
@@ -177,10 +179,10 @@ private extension BoardGameViewController {
                     guard let cell = tableView.dequeueReusableCell(
                         withIdentifier: EmptyTableViewCell.reuseIdentifer,
                         for: indexPath) as? EmptyTableViewCell else { fatalError("Could not create new cell") }
-
+                    cell.configure(emptyCellViewModel: EmptyTableCellViewModel())
                     return cell
                 }
-              }
+            }
         )
     }
 

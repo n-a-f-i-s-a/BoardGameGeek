@@ -32,14 +32,10 @@ final class BoardGameTableViewCell: UITableViewCell {
         self.yearLabel.isHidden = false
     }
 
-    func configure(title: String, year: String) {
-        self.titleLabel.text = title
-    
-        if year.isEmpty == false {
-            self.yearLabel.text = year
-        } else {
-            self.yearLabel.isHidden = true
-        }
+    func configure(boardGameCellViewModel: BoardGameCellViewModel) {
+        self.titleLabel.text = boardGameCellViewModel.title
+        self.yearLabel.text = boardGameCellViewModel.year
+        self.yearLabel.isHidden = boardGameCellViewModel.isYearHidden
     }
 
 }
