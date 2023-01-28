@@ -61,7 +61,10 @@ public extension DetailViewModel {
     }
 
     var description: String {
-        boardGameDetails?.description ?? "" // remove xml chars
+        guard let description = boardGameDetails?.description else {
+            return ""
+        }
+        return description.removeXML()
     }
 
     var category: String {

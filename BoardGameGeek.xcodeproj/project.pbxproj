@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		780303102984DB9A00A0BA35 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */; };
 		780303122984FC2000A0BA35 /* EmptyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303112984FC2000A0BA35 /* EmptyTableViewCell.swift */; };
+		780303142985149700A0BA35 /* String+withXMLChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303132985149700A0BA35 /* String+withXMLChars.swift */; };
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
 		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		780303112984FC2000A0BA35 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
+		780303132985149700A0BA35 /* String+withXMLChars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+withXMLChars.swift"; sourceTree = "<group>"; };
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78030315298514ED00A0BA35 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		78E3EC37297FA56600A56B65 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +101,8 @@
 				78E3EC4C297FA56700A56B65 /* Assets.xcassets */,
 				78E3EC4E297FA56700A56B65 /* LaunchScreen.storyboard */,
 				78E3EC51297FA56700A56B65 /* Info.plist */,
+				780303132985149700A0BA35 /* String+withXMLChars.swift */,
+				78030315298514ED00A0BA35 /* Extensions */,
 			);
 			path = BoardGameGeek;
 			sourceTree = "<group>";
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				780303142985149700A0BA35 /* String+withXMLChars.swift in Sources */,
 				780303102984DB9A00A0BA35 /* RoundedImageView.swift in Sources */,
 				78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */,
 				78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */,
