@@ -14,15 +14,28 @@ final class BoardGameService {
 
     enum Result {
         case list([BoardGame])
-        case detail
+        case detail(BoardGameDetails)
         case empty
     }
 
-    enum NetworkError: Error {
+    enum NetworkError: LocalizedError {
         case badURL
         case badRequest
         case serverError
         case unknown
+
+        var errorDescription: String? {
+            switch self {
+            case .badURL:
+                return "Request URL is bad"
+            case .badRequest:
+                return "Bad request"
+            case .serverError:
+                return "Encountered server error"
+            case .unknown:
+                return "Encountered unknow error"
+            }
+        }
     }
 
     // MARK: - properties
@@ -71,4 +84,11 @@ extension BoardGameService: BoardGameServiceProtocol {
         let result = try await networkTask.value
         return result
     }
+
+    func getImageData(url: URL) async throws -> Data {
+        let session = URLSession.shared
+        let (data, _) = try await session.data(from: url)
+        return data
+    }
+
 }

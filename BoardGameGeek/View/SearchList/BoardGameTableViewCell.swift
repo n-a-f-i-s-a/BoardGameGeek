@@ -19,6 +19,7 @@ final class BoardGameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.accessoryType = .disclosureIndicator
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,14 +32,17 @@ final class BoardGameTableViewCell: UITableViewCell {
         self.yearLabel.isHidden = false
     }
 
-    func configure(title: String, year: String) {
-        self.titleLabel.text = title
-    
-        if year.isEmpty == false {
-            self.yearLabel.text = year
-        } else {
-            self.yearLabel.isHidden = true
-        }
+    func configure(boardGameCellViewModel: BoardGameCellViewModel) {
+        self.titleLabel.text = boardGameCellViewModel.title
+        self.yearLabel.text = boardGameCellViewModel.year
+        self.yearLabel.isHidden = boardGameCellViewModel.isYearHidden
+
+        configureStyle()
+    }
+
+    func configureStyle() {
+        titleLabel.textColor = .primaryTitleColor
+        yearLabel.textColor = .secondaryTitleColor
     }
 
 }
