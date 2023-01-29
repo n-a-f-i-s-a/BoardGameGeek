@@ -44,8 +44,6 @@ final public class BoardGameViewModel {
 extension BoardGameViewModel {
 
     func getGames(searchString: String) async throws {
-        boardGames = []
-
         let baseURL = "https://api.geekdo.com/xmlapi/search?search="
         guard let url = URL(string: baseURL + searchString) else {
             throw BoardGameService.NetworkError.badURL
@@ -57,7 +55,7 @@ extension BoardGameViewModel {
                 if boardGames.isEmpty && state != .idle {
                     state = .empty
                 } else {
-                    self.boardGames = boardGames
+                    self.boardGames = boardGames.sorted(by: { $0.yearPublished > $1.yearPublished })
                     state = .loaded
                 }
             }
@@ -79,9 +77,9 @@ extension BoardGameViewModel {
 extension BoardGameViewModel {
 
     func getYear(boardGame: BoardGame) -> String {
-        boardGame.yearPublished.isEmpty
+        boardGame.yearPublished == 0
         ? ""
-        : "Year Published: " + boardGame.yearPublished
+        : "Year Published: " + String(boardGame.yearPublished)
     }
 
 }

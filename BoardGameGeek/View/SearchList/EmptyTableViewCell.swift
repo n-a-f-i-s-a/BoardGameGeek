@@ -28,6 +28,14 @@ class EmptyTableViewCell: UITableViewCell {
 
     func configure(emptyCellViewModel: EmptyTableCellViewModel) {
         emptyMessageLabel.text = emptyCellViewModel.title
+
+        configureStyle()
+    }
+
+    func configureStyle() {
+        emptyMessageLabel.textColor = .secondaryTitleColor
+        
+        self.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
     }
 
 }

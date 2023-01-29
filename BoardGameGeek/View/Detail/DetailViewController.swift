@@ -54,7 +54,11 @@ final class DetailViewController: UIViewController {
 private extension DetailViewController {
 
     func configureStyle() {
-
+        nameLabel.textColor = .primaryTitleColor
+        minimumPlayerLabel.textColor = .secondaryTitleColor
+        maximumPlayerLabel.textColor = .secondaryTitleColor
+        categoryLabel.textColor = .secondaryTitleColor
+        publisherLabel.textColor = .secondaryTitleColor
     }
 
     func configureViewModel() {

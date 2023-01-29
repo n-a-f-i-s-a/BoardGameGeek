@@ -32,6 +32,7 @@ final class BoardGameViewController: UIViewController {
         configureViewModel()
         configureTableView()
         configureSearchBar()
+        configureStyle()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -59,6 +60,15 @@ private extension BoardGameViewController {
         tableView.delegate = self
         self.tableView.estimatedRowHeight = 100.0
         self.tableView.rowHeight = UITableView.automaticDimension
+        tableView.tableFooterView = UIView()
+        tableView.tableHeaderView = UIView()
+    }
+
+    func configureStyle() {
+        tableView.separatorColor = .separatorColor
+        tableView.separatorInset = .zero
+
+        searchController.searchBar.searchTextField.textColor = .searchBarColor
     }
 
     func configureSearchBar() {
@@ -83,6 +93,7 @@ private extension BoardGameViewController {
     func evaluateState() {
         switch boardGameViewModel.state {
         case .loading:
+            self.update(with: boardGameViewModel.boardGames, animate: false)
             self.activityIndicatorView.startAnimating()
             self.tableView.isUserInteractionEnabled = false
         case .empty:
@@ -118,6 +129,7 @@ extension BoardGameViewController: UISearchBarDelegate {
 
         Task { [weak self] in
             do {
+                boardGameViewModel.boardGames = []
                 boardGameViewModel.state = .loading
                 evaluateState()
                 try await boardGameViewModel.getGames(searchString: searchString)

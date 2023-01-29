@@ -36,6 +36,13 @@ final class BoardGameTableViewCell: UITableViewCell {
         self.titleLabel.text = boardGameCellViewModel.title
         self.yearLabel.text = boardGameCellViewModel.year
         self.yearLabel.isHidden = boardGameCellViewModel.isYearHidden
+
+        configureStyle()
+    }
+
+    func configureStyle() {
+        titleLabel.textColor = .primaryTitleColor
+        yearLabel.textColor = .secondaryTitleColor
     }
 
 }

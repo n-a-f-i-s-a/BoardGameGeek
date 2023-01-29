@@ -82,7 +82,7 @@ class ShadowView: UIView {
         super.layoutSubviews()
 
         self.clipsToBounds = false
-        self.shadowColor = UIColor.black.cgColor
+        self.shadowColor = UIColor.shadowColor.cgColor
         self.shadowOpacity = 1
         self.shadowOffset = CGSize.zero
         self.shadowRadius = 10

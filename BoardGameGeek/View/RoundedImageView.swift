@@ -36,6 +36,9 @@ class RoundedImageView: UIImageView {
         super.layoutSubviews()
         self.cornerRadius = self.frame.size.height / 2
         self.clipsToBounds = true
+
+        self.isAccessibilityElement = true
+        self.accessibilityLabel = "Game Image"
     }
 
 }
