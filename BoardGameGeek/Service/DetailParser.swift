@@ -88,7 +88,6 @@ extension DetailParser:  XMLParserDelegate {
         case "name":
             boardGameDetails.name = currentValue
         case "description":
-            print("in description")
             boardGameDetails.description = currentValue
         case "boardgamepublisher":
             boardGameDetails.boardGamePublisher = currentValue
@@ -99,8 +98,6 @@ extension DetailParser:  XMLParserDelegate {
         default:
             break
         }
-
-        print(boardGameDetails)
 
         currentValue = ""
     }

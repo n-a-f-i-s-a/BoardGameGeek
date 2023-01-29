@@ -18,11 +18,24 @@ final class BoardGameService {
         case empty
     }
 
-    enum NetworkError: Error {
+    enum NetworkError: LocalizedError {
         case badURL
         case badRequest
         case serverError
         case unknown
+
+        var errorDescription: String? {
+            switch self {
+            case .badURL:
+                return "Request URL is bad"
+            case .badRequest:
+                return "Bad request"
+            case .serverError:
+                return "Encountered server error"
+            case .unknown:
+                return "Encountered unknow error"
+            }
+        }
     }
 
     // MARK: - properties
