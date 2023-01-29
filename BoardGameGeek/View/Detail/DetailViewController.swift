@@ -7,10 +7,11 @@
 
 import UIKit
 
-final public class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
 
     // MARK: - properties
 
+    @IBOutlet private weak var imageContainerView: UIView!
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var yearLabel: UILabel!
@@ -31,20 +32,30 @@ final public class DetailViewController: UIViewController {
 
     // MARK: - ViewController lifecycle
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         configureViewModel()
         fetchGameDetails()
+        configureStyle()
     }
 
-    public override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         imageView.isHidden = true
+        imageContainerView.isHidden = true
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        self.view.frame = CGRect(origin: .zero, size: view.bounds.size)
+        self.view.setNeedsDisplay()
+    }
 }
 
 private extension DetailViewController {
+
+    func configureStyle() {
+
+    }
 
     func configureViewModel() {
         detailViewModel = DetailViewModel(boardGameService: BoardGameService(parser: DetailParser()))
@@ -93,6 +104,7 @@ private extension DetailViewController {
                    let imageData = try await detailViewModel.getImageData(url: imageURL)
                     self?.imageView.image = UIImage(data: imageData)
                     self?.imageView.isHidden = detailViewModel.isImageHidden
+                    imageContainerView.isHidden = detailViewModel.isImageHidden
                 }
             } catch {
                 // throw error

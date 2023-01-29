@@ -90,9 +90,9 @@ private extension BoardGameViewController {
             self.tableView.isUserInteractionEnabled = true
             self.update(with: boardGameViewModel.boardGames, animate: false)
         case .loaded:
-            self.activityIndicatorView.stopAnimating()
             self.tableView.isUserInteractionEnabled = true
             self.update(with: boardGameViewModel.boardGames, animate: false)
+            self.activityIndicatorView.stopAnimating()
         case .idle:
             break
         }

@@ -12,6 +12,7 @@
 		780303142985149700A0BA35 /* String+withXMLChars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303132985149700A0BA35 /* String+withXMLChars.swift */; };
 		7803031729852C3C00A0BA35 /* BoardGameCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803031629852C3C00A0BA35 /* BoardGameCellViewModel.swift */; };
 		780303192985303900A0BA35 /* EmptyTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303182985303900A0BA35 /* EmptyTableCellViewModel.swift */; };
+		7803031C2985FBDC00A0BA35 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803031B2985FBDC00A0BA35 /* ShadowView.swift */; };
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
 		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
@@ -37,6 +38,7 @@
 		780303132985149700A0BA35 /* String+withXMLChars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+withXMLChars.swift"; sourceTree = "<group>"; };
 		7803031629852C3C00A0BA35 /* BoardGameCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameCellViewModel.swift; sourceTree = "<group>"; };
 		780303182985303900A0BA35 /* EmptyTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableCellViewModel.swift; sourceTree = "<group>"; };
+		7803031B2985FBDC00A0BA35 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 		78E3EC5D297FA85500A56B65 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7803031B2985FBDC00A0BA35 /* ShadowView.swift */,
 				7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */,
 				78E3EC6829833D0200A56B65 /* Detail */,
 				78E3EC6729833CF200A56B65 /* SearchList */,
@@ -278,6 +281,7 @@
 				780303102984DB9A00A0BA35 /* RoundedImageView.swift in Sources */,
 				78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */,
 				78E3EC62297FF41600A56B65 /* BoardGameTableViewCell.swift in Sources */,
+				7803031C2985FBDC00A0BA35 /* ShadowView.swift in Sources */,
 				78E3EC59297FA6C200A56B65 /* BoardGameViewModel.swift in Sources */,
 				78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */,
 				780303122984FC2000A0BA35 /* EmptyTableViewCell.swift in Sources */,

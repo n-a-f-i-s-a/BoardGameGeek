@@ -125,26 +125,52 @@
                                 <rect key="frame" x="0.0" y="75" width="393" height="743"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="BTc-Fu-bqj">
-                                        <rect key="frame" x="0.0" y="8" width="394" height="352"/>
+                                        <rect key="frame" x="0.0" y="20" width="394" height="352"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nTE-Vj-JZB" customClass="RoundedImageView" customModule="BoardGameGeek" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smg-wB-Jeq" customClass="ShadowView" customModule="BoardGameGeek" customModuleProvider="target">
                                                 <rect key="frame" x="77" y="0.0" width="240" height="240"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nTE-Vj-JZB" customClass="RoundedImageView" customModule="BoardGameGeek" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="nTE-Vj-JZB" secondAttribute="height" multiplier="1:1" id="8Vh-cU-1c1"/>
+                                                            <constraint firstAttribute="width" constant="200" id="Kmh-fU-RYT"/>
+                                                            <constraint firstAttribute="height" constant="240" id="v6G-bw-gTT"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="120"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <variation key="default">
+                                                            <mask key="constraints">
+                                                                <exclude reference="Kmh-fU-RYT"/>
+                                                            </mask>
+                                                        </variation>
+                                                    </imageView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="nTE-Vj-JZB" secondAttribute="height" multiplier="1:1" id="8Vh-cU-1c1"/>
-                                                    <constraint firstAttribute="width" constant="200" id="Kmh-fU-RYT"/>
-                                                    <constraint firstAttribute="height" constant="240" id="v6G-bw-gTT"/>
+                                                    <constraint firstAttribute="width" constant="240" id="Znz-ve-UB6"/>
+                                                    <constraint firstAttribute="width" secondItem="Smg-wB-Jeq" secondAttribute="height" multiplier="1:1" id="eY5-pL-Pt9"/>
+                                                    <constraint firstItem="nTE-Vj-JZB" firstAttribute="centerX" secondItem="Smg-wB-Jeq" secondAttribute="centerX" id="niW-fx-kb7"/>
+                                                    <constraint firstItem="nTE-Vj-JZB" firstAttribute="centerY" secondItem="Smg-wB-Jeq" secondAttribute="centerY" id="po7-bP-0wl"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="120"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                        <size key="value" width="0.0" height="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="Kmh-fU-RYT"/>
-                                                    </mask>
-                                                </variation>
-                                            </imageView>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-P2-Acn">
                                                 <rect key="frame" x="177" y="258" width="40" height="24"/>
                                                 <subviews>
@@ -165,7 +191,7 @@
                                                 <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="zN0-37-1lW">
-                                                <rect key="frame" x="197" y="320.33333333333331" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="197" y="300" width="0.0" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="QhZ-mz-0qh">
@@ -220,7 +246,7 @@
                                     <constraint firstAttribute="trailing" secondItem="BTc-Fu-bqj" secondAttribute="trailing" id="4sQ-ev-csA"/>
                                     <constraint firstItem="BTc-Fu-bqj" firstAttribute="leading" secondItem="RHY-CE-acB" secondAttribute="leading" id="ScW-Ra-rmL"/>
                                     <constraint firstAttribute="bottom" secondItem="BTc-Fu-bqj" secondAttribute="bottom" constant="8" id="kmv-Hv-kVS"/>
-                                    <constraint firstItem="BTc-Fu-bqj" firstAttribute="top" secondItem="RHY-CE-acB" secondAttribute="top" constant="8" id="uMG-DW-5bL"/>
+                                    <constraint firstItem="BTc-Fu-bqj" firstAttribute="top" secondItem="RHY-CE-acB" secondAttribute="top" constant="20" id="uMG-DW-5bL"/>
                                     <constraint firstItem="BTc-Fu-bqj" firstAttribute="width" secondItem="RHY-CE-acB" secondAttribute="width" multiplier="1:1" id="w0S-sy-ByX"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="2LZ-FC-wi8"/>
@@ -245,6 +271,7 @@
                         <outlet property="activityIndicatorView" destination="wg4-oL-IvT" id="x0e-dZ-FXu"/>
                         <outlet property="categoryLabel" destination="4x0-yP-uxc" id="Au2-on-aaC"/>
                         <outlet property="descriptionLabel" destination="iRA-NP-YZd" id="BgJ-Lu-JM9"/>
+                        <outlet property="imageContainerView" destination="Smg-wB-Jeq" id="ldg-zc-jQd"/>
                         <outlet property="imageView" destination="nTE-Vj-JZB" id="3nk-39-pq0"/>
                         <outlet property="maximumPlayerLabel" destination="m3I-Bj-cTz" id="luZ-4I-w7v"/>
                         <outlet property="minimumPlayerLabel" destination="QhZ-mz-0qh" id="guZ-eW-jN9"/>
