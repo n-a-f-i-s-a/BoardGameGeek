@@ -89,7 +89,6 @@ class ShadowView: UIView {
         self.cornerRadius = self.frame.height / 2
         self.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadius).cgPath
         self.backgroundColor = .clear
-
     }
 
 }

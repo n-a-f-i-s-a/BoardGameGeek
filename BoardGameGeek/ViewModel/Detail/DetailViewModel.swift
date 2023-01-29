@@ -11,7 +11,7 @@ final public class DetailViewModel {
 
     // MARK: - properties
 
-    let boardGameService: BoardGameServiceProtocol
+    private let boardGameService: BoardGameServiceProtocol
     var boardGameDetails: BoardGameDetails?
 
     init(boardGameService: BoardGameServiceProtocol) {
@@ -41,12 +41,10 @@ public extension DetailViewModel {
     func getImageData(url: URL) async throws -> Data {
         do {
             return try await boardGameService.getImageData(url: url)
-
         } catch {
             throw error
         }
     }
-
 
 }
 

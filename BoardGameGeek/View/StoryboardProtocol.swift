@@ -25,5 +25,4 @@ extension StoryboardProtocol where Self: UIViewController {
 
 }
 
-
 extension UIViewController: StoryboardProtocol {}

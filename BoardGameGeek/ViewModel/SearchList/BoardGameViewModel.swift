@@ -30,7 +30,7 @@ final public class BoardGameViewModel {
 
     // MARK: - properties
 
-    let boardGameService: BoardGameServiceProtocol
+    private let boardGameService: BoardGameServiceProtocol
     var boardGames: [BoardGame]
     public var state: State
 
