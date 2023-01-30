@@ -125,21 +125,21 @@
                                 <rect key="frame" x="0.0" y="75" width="393" height="743"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="BTc-Fu-bqj">
-                                        <rect key="frame" x="0.0" y="20" width="394" height="394.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="20" width="394" height="448.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smg-wB-Jeq" customClass="ShadowView" customModule="BoardGameGeek" customModuleProvider="target">
-                                                <rect key="frame" x="77" y="0.0" width="240" height="240"/>
+                                                <rect key="frame" x="47" y="0.0" width="300" height="300"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nTE-Vj-JZB" customClass="RoundedImageView" customModule="BoardGameGeek" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="nTE-Vj-JZB" secondAttribute="height" multiplier="1:1" id="8Vh-cU-1c1"/>
                                                             <constraint firstAttribute="width" constant="200" id="Kmh-fU-RYT"/>
-                                                            <constraint firstAttribute="height" constant="240" id="v6G-bw-gTT"/>
+                                                            <constraint firstAttribute="height" constant="300" id="v6G-bw-gTT"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="120"/>
+                                                                <real key="value" value="150"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <variation key="default">
@@ -151,7 +151,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="240" id="Znz-ve-UB6"/>
+                                                    <constraint firstAttribute="width" constant="300" id="Znz-ve-UB6"/>
                                                     <constraint firstAttribute="width" secondItem="Smg-wB-Jeq" secondAttribute="height" multiplier="1:1" id="eY5-pL-Pt9"/>
                                                     <constraint firstItem="nTE-Vj-JZB" firstAttribute="centerX" secondItem="Smg-wB-Jeq" secondAttribute="centerX" id="niW-fx-kb7"/>
                                                     <constraint firstItem="nTE-Vj-JZB" firstAttribute="centerY" secondItem="Smg-wB-Jeq" secondAttribute="centerY" id="po7-bP-0wl"/>
@@ -164,7 +164,7 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="120"/>
+                                                        <real key="value" value="150"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
                                                         <size key="value" width="0.0" height="0.0"/>
@@ -172,7 +172,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rSS-P2-Acn">
-                                                <rect key="frame" x="177" y="258" width="40" height="24"/>
+                                                <rect key="frame" x="177" y="318" width="40" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgh-H8-TRh">
                                                         <rect key="frame" x="20" y="8" width="0.0" height="0.0"/>
@@ -191,7 +191,7 @@
                                                 <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" id="zN0-37-1lW">
-                                                <rect key="frame" x="197" y="300" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="197" y="360" width="0.0" height="0.0"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="QhZ-mz-0qh">
@@ -210,7 +210,7 @@
                                                 <viewLayoutGuide key="safeArea" id="Cf6-u1-DeE"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="baE-hn-2OG">
-                                                <rect key="frame" x="197" y="318" width="0.0" height="0.0"/>
+                                                <rect key="frame" x="197" y="378" width="0.0" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="4x0-yP-uxc">
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -226,8 +226,8 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-0y-SIi">
-                                                <rect key="frame" x="122.00000000000001" y="336" width="150.33333333333337" height="58.333333333333314"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-0y-SIi">
+                                                <rect key="frame" x="122.00000000000001" y="396" width="150.33333333333337" height="52.333333333333314"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="iRA-NP-YZd">
                                                         <rect key="frame" x="19.999999999999993" y="8" width="110.33333333333331" height="0.0"/>
@@ -237,7 +237,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOg-Lg-qaG">
-                                                        <rect key="frame" x="19.999999999999993" y="16.000000000000004" width="110.33333333333331" height="34.333333333333343"/>
+                                                        <rect key="frame" x="19.999999999999993" y="10" width="110.33333333333331" height="34.333333333333336"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Learn More"/>
                                                         <connections>
