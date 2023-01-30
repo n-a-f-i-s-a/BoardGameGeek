@@ -25,6 +25,11 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var learnMoreButton: UIButton!
 
+    @IBOutlet private weak var ageLabel: UILabel!
+    @IBOutlet private weak var playingTimeLabel: UILabel!
+    @IBOutlet private weak var minimumPlayingTimeLabel: UILabel!
+    @IBOutlet private weak var maximumPlayingTimeLabel: UILabel!
+
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
 
     private var detailViewModel: DetailViewModel!
@@ -78,6 +83,10 @@ private extension DetailViewController {
         maximumPlayerLabel.textColor = .secondaryTitleColor
         categoryLabel.textColor = .secondaryTitleColor
         publisherLabel.textColor = .secondaryTitleColor
+        ageLabel.textColor = .secondaryTitleColor
+        playingTimeLabel.textColor = .secondaryTitleColor
+        minimumPlayingTimeLabel.textColor = .secondaryTitleColor
+        maximumPlayingTimeLabel.textColor = .secondaryTitleColor
     }
 
     func configureViewModel() {
@@ -118,6 +127,15 @@ private extension DetailViewController {
         categoryLabel.isHidden = detailViewModel.isCategoryHidden
         publisherLabel.text = detailViewModel.publisher
         publisherLabel.isHidden = detailViewModel.ispublisherHidden
+
+        ageLabel.text = detailViewModel.age
+        ageLabel.isHidden = detailViewModel.isAgeHidden
+        playingTimeLabel.text = detailViewModel.playingTime
+        playingTimeLabel.isHidden = detailViewModel.isPlayingTimeHidden
+        minimumPlayingTimeLabel.text = detailViewModel.minimumPlayingTime
+        minimumPlayingTimeLabel.isHidden = detailViewModel.isMinimumPlayingTimeHidden
+        maximumPlayingTimeLabel.text = detailViewModel.maximumPlayingTime
+        maximumPlayingTimeLabel.isHidden = detailViewModel.ismMaximumPlayingTimeHidden
 
         showImage()
     }
