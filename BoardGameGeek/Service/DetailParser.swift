@@ -11,8 +11,8 @@ final class DetailParser: NSObject {
 
     // MARK: - properties
 
-    var boardGameDetails: BoardGameDetails
-    var currentValue: String
+    private var boardGameDetails: BoardGameDetails
+    private var currentValue: String
 
     override init() {
         currentValue = ""

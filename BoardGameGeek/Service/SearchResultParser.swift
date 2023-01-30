@@ -11,8 +11,8 @@ final class SearchResultParser: NSObject {
 
     // MARK: - properties
 
-    var boardGames: [BoardGame]
-    var currentValue: String
+    private var boardGames: [BoardGame]
+    private var currentValue: String
 
     override init() {
         boardGames = []

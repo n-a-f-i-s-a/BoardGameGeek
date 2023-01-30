@@ -28,9 +28,13 @@ final public class BoardGameViewModel {
         case empty
     }
 
+    enum PushedViewModel {
+        case detail(DetailViewModel)
+    }
+
     // MARK: - properties
 
-    let boardGameService: BoardGameServiceProtocol
+    private let boardGameService: BoardGameServiceProtocol
     var boardGames: [BoardGame]
     public var state: State
 
@@ -45,7 +49,10 @@ extension BoardGameViewModel {
 
     func getGames(searchString: String) async throws {
         let baseURL = "https://api.geekdo.com/xmlapi/search?search="
-        guard let url = URL(string: baseURL + searchString) else {
+
+        guard let urlString = (baseURL + searchString).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: urlString)
+        else {
             throw BoardGameService.NetworkError.badURL
         }
 
@@ -64,9 +71,15 @@ extension BoardGameViewModel {
         }
     }
 
-    func selectItem(row: Int) -> String? {
+    func selectItem(row: Int) -> PushedViewModel? {
         if boardGames.indices.contains(row) {
-            return boardGames[row].objectid
+            return
+                .detail(
+                    DetailViewModel(
+                        boardGameService: BoardGameService(parser: DetailParser()),
+                        objectID: boardGames[row].objectid
+                    )
+                )
         }
 
         return nil

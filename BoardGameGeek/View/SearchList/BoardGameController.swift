@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class BoardGameViewController: UIViewController {
+final class BoardGameViewController: UIViewController, ViewModelProtocol {
 
     // MARK: - Type
 
@@ -16,8 +16,9 @@ final class BoardGameViewController: UIViewController {
 
     // MARK: - properties
 
+    var viewModel: BoardGameViewModel!
+    
     private var storyBoardName: String = "Main"
-    private var boardGameViewModel: BoardGameViewModel!
     private var searchController: UISearchController!
     private lazy var dataSource = configureDataSource()
 
@@ -52,7 +53,7 @@ final class BoardGameViewController: UIViewController {
 private extension BoardGameViewController {
 
     func configureViewModel() {
-        boardGameViewModel = BoardGameViewModel(boardGameService: BoardGameService(parser: SearchResultParser()))
+        viewModel = BoardGameViewModel(boardGameService: BoardGameService(parser: SearchResultParser()))
     }
 
     func configureTableView() {
@@ -77,32 +78,25 @@ private extension BoardGameViewController {
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search a boardgame"
+
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
-    }
-
-    func showError(_ error: Error) {
-        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "OK", style: .default) { [unowned self] _ in
-            self.dismiss(animated: true, completion: nil)
-        }
-        alertController.addAction(alertAction)
-        present(alertController, animated: true, completion: nil)
+        navigationItem.preferredSearchBarPlacement = .stacked
     }
 
     func evaluateState() {
-        switch boardGameViewModel.state {
+        switch viewModel.state {
         case .loading:
-            self.update(with: boardGameViewModel.boardGames, animate: false)
+            self.update(with: viewModel.boardGames, animate: false)
             self.activityIndicatorView.startAnimating()
             self.tableView.isUserInteractionEnabled = false
         case .empty:
             self.activityIndicatorView.stopAnimating()
             self.tableView.isUserInteractionEnabled = true
-            self.update(with: boardGameViewModel.boardGames, animate: false)
+            self.update(with: viewModel.boardGames, animate: false)
         case .loaded:
             self.tableView.isUserInteractionEnabled = true
-            self.update(with: boardGameViewModel.boardGames, animate: false)
+            self.update(with: viewModel.boardGames, animate: false)
             self.activityIndicatorView.stopAnimating()
         case .idle:
             break
@@ -116,9 +110,9 @@ private extension BoardGameViewController {
 extension BoardGameViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        boardGameViewModel.boardGames = []
-        boardGameViewModel.state = .idle
-        self.update(with: boardGameViewModel.boardGames, animate: false)
+        viewModel.boardGames = []
+        viewModel.state = .idle
+        self.update(with: viewModel.boardGames, animate: false)
         self.activityIndicatorView.stopAnimating()
         searchController.searchBar.endEditing(true)
     }
@@ -129,16 +123,16 @@ extension BoardGameViewController: UISearchBarDelegate {
 
         Task { [weak self] in
             do {
-                boardGameViewModel.boardGames = []
-                boardGameViewModel.state = .loading
+                viewModel.boardGames = []
+                viewModel.state = .loading
                 evaluateState()
-                try await boardGameViewModel.getGames(searchString: searchString)
+                try await viewModel.getGames(searchString: searchString)
                 evaluateState()
             } catch {
                 self?.searchController.searchBar.text = ""
                 self?.activityIndicatorView.stopAnimating()
                 self?.tableView.isUserInteractionEnabled = true
-                showError(error)
+                self?.showError(error)
             }
         }
 
@@ -158,7 +152,7 @@ private extension BoardGameViewController {
         let allBoardGamesItems = boardGames.map { BoardGameViewModel.Item.boardGame($0)}
         snapshot.appendItems(allBoardGamesItems, toSection: .basicInfo)
 
-        if boardGameViewModel.state == .empty {
+        if viewModel.state == .empty {
             snapshot.appendItems([BoardGameViewModel.Item.empty(1)], toSection: .empty)
         }
 
@@ -182,7 +176,7 @@ private extension BoardGameViewController {
                         cell.configure(
                             boardGameCellViewModel: BoardGameCellViewModel(
                                 title: item.name,
-                                year: self.boardGameViewModel.getYear(boardGame: item)
+                                year: self.viewModel.getYear(boardGame: item)
                             )
                         )
                     }
@@ -207,7 +201,11 @@ extension BoardGameViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let nextViewController = DetailViewController.instantiateFromStoryboard(storyboardName: storyBoardName)
-        nextViewController.objectID = boardGameViewModel.selectItem(row: indexPath.row)
+
+        if case let .detail(viewModel) = viewModel.selectItem(row: indexPath.row){
+            nextViewController.viewModel = viewModel
+        }
+
         self.navigationController?.pushViewController(nextViewController, animated: true)
     }
 
