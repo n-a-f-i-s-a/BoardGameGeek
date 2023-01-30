@@ -77,8 +77,10 @@ private extension BoardGameViewController {
         searchController.searchBar.autocapitalizationType = .none
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search a boardgame"
+
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.preferredSearchBarPlacement = .stacked
     }
 
     func showError(_ error: Error) {
