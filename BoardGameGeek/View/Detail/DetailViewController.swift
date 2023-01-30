@@ -23,10 +23,12 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var publisherLabel: UILabel!
 
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var learnMoreButton: UIButton!
 
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
 
     private var detailViewModel: DetailViewModel!
+    private var isLearnMoreButtonTapped: Bool = false
 
     public var objectID: String?
 
@@ -48,7 +50,24 @@ final class DetailViewController: UIViewController {
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         self.view.frame = CGRect(origin: .zero, size: view.bounds.size)
         self.view.setNeedsDisplay()
+        self.view.layoutIfNeeded()
+        self.view.layoutSubviews()
     }
+
+    @IBAction func learnMoreTapped(_ sender: UIButton) {
+        isLearnMoreButtonTapped.toggle()
+
+        if isLearnMoreButtonTapped {
+            descriptionLabel.numberOfLines = 0
+            descriptionLabel.lineBreakMode = .byWordWrapping
+            learnMoreButton.setTitle("Learn Less", for: .normal)
+        } else {
+            descriptionLabel.numberOfLines = 2
+            descriptionLabel.lineBreakMode = .byTruncatingTail
+            learnMoreButton.setTitle("Learn More", for: .normal)
+        }
+    }
+
 }
 
 private extension DetailViewController {
@@ -87,6 +106,8 @@ private extension DetailViewController {
         nameLabel.text = detailViewModel.name
         yearLabel.text = detailViewModel.year
         descriptionLabel.text = detailViewModel.description
+        descriptionLabel.numberOfLines = 2
+        descriptionLabel.lineBreakMode = .byTruncatingTail
 
         maximumPlayerLabel.text = detailViewModel.maxPlayer
         maximumPlayerLabel.isHidden = detailViewModel.isMaxPlayerHidden

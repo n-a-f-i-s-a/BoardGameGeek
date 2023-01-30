@@ -125,7 +125,7 @@
                                 <rect key="frame" x="0.0" y="75" width="393" height="743"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="BTc-Fu-bqj">
-                                        <rect key="frame" x="0.0" y="20" width="394" height="352"/>
+                                        <rect key="frame" x="0.0" y="20" width="394" height="394.33333333333331"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Smg-wB-Jeq" customClass="ShadowView" customModule="BoardGameGeek" customModuleProvider="target">
                                                 <rect key="frame" x="77" y="0.0" width="240" height="240"/>
@@ -226,16 +226,24 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-0y-SIi">
-                                                <rect key="frame" x="177" y="336" width="40" height="16"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gTC-0y-SIi">
+                                                <rect key="frame" x="122.00000000000001" y="336" width="150.33333333333337" height="58.333333333333314"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="iRA-NP-YZd">
-                                                        <rect key="frame" x="20" y="8" width="0.0" height="0.0"/>
+                                                        <rect key="frame" x="19.999999999999993" y="8" width="110.33333333333331" height="0.0"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOg-Lg-qaG">
+                                                        <rect key="frame" x="19.999999999999993" y="16.000000000000004" width="110.33333333333331" height="34.333333333333343"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Learn More"/>
+                                                        <connections>
+                                                            <action selector="learnMoreTapped:" destination="6tX-NP-72k" eventType="touchUpInside" id="aso-gE-NZB"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
                                             </stackView>
@@ -273,6 +281,7 @@
                         <outlet property="descriptionLabel" destination="iRA-NP-YZd" id="BgJ-Lu-JM9"/>
                         <outlet property="imageContainerView" destination="Smg-wB-Jeq" id="ldg-zc-jQd"/>
                         <outlet property="imageView" destination="nTE-Vj-JZB" id="3nk-39-pq0"/>
+                        <outlet property="learnMoreButton" destination="qOg-Lg-qaG" id="WFv-kx-0jx"/>
                         <outlet property="maximumPlayerLabel" destination="m3I-Bj-cTz" id="luZ-4I-w7v"/>
                         <outlet property="minimumPlayerLabel" destination="QhZ-mz-0qh" id="guZ-eW-jN9"/>
                         <outlet property="nameLabel" destination="Fgh-H8-TRh" id="U8x-Fn-ibt"/>
