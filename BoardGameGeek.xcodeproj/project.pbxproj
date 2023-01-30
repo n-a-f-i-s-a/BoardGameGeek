@@ -14,6 +14,7 @@
 		780303192985303900A0BA35 /* EmptyTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303182985303900A0BA35 /* EmptyTableCellViewModel.swift */; };
 		7803031C2985FBDC00A0BA35 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803031B2985FBDC00A0BA35 /* ShadowView.swift */; };
 		7803031E2986161900A0BA35 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803031D2986161900A0BA35 /* Colors.swift */; };
+		7803032129876D9000A0BA35 /* Alert+showError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803032029876D9000A0BA35 /* Alert+showError.swift */; };
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
 		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
@@ -41,6 +42,7 @@
 		780303182985303900A0BA35 /* EmptyTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableCellViewModel.swift; sourceTree = "<group>"; };
 		7803031B2985FBDC00A0BA35 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		7803031D2986161900A0BA35 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7803032029876D9000A0BA35 /* Alert+showError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+showError.swift"; sourceTree = "<group>"; };
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				780303132985149700A0BA35 /* String+withXMLChars.swift */,
 				7803031D2986161900A0BA35 /* Colors.swift */,
+				7803032029876D9000A0BA35 /* Alert+showError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				780303122984FC2000A0BA35 /* EmptyTableViewCell.swift in Sources */,
 				78E3EC74298363A200A56B65 /* DetailParser.swift in Sources */,
 				78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */,
+				7803032129876D9000A0BA35 /* Alert+showError.swift in Sources */,
 				7803031E2986161900A0BA35 /* Colors.swift in Sources */,
 				78E3EC762983836C00A56B65 /* StoryboardProtocol.swift in Sources */,
 				78E3EC7229833DD500A56B65 /* BoardGameDetails.swift in Sources */,

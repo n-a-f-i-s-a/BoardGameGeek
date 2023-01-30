@@ -53,6 +53,7 @@ private extension BoardGameService {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.unknown
         }
+        
         switch httpResponse.statusCode {
         case 200...299:
             break

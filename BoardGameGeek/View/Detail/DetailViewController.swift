@@ -50,6 +50,7 @@ final class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         imageView.isHidden = true
         imageContainerView.isHidden = true
+        learnMoreButton.isHidden = true
     }
 
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -106,7 +107,9 @@ private extension DetailViewController {
                 self?.activityIndicatorView.stopAnimating()
                 navigationItem.hidesBackButton = false
             } catch {
-                print(error) // handle later
+                self?.activityIndicatorView.stopAnimating()
+                navigationItem.hidesBackButton = false
+                self?.showError(error)
             }
         }
     }
@@ -117,6 +120,7 @@ private extension DetailViewController {
         descriptionLabel.text = detailViewModel.description
         descriptionLabel.numberOfLines = 2
         descriptionLabel.lineBreakMode = .byTruncatingTail
+        learnMoreButton.isHidden = false
 
         maximumPlayerLabel.text = detailViewModel.maxPlayer
         maximumPlayerLabel.isHidden = detailViewModel.isMaxPlayerHidden
@@ -150,7 +154,7 @@ private extension DetailViewController {
                     imageContainerView.isHidden = detailViewModel.isImageHidden
                 }
             } catch {
-                // throw error
+                self?.showError(error)
             }
         }
     }
