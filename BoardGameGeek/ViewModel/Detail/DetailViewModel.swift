@@ -13,7 +13,7 @@ final public class DetailViewModel {
 
     private let boardGameService: BoardGameServiceProtocol
     private let objectID: String?
-    var boardGameDetails: BoardGameDetails?
+    private var boardGameDetails: BoardGameDetails?
 
     init(boardGameService: BoardGameServiceProtocol, objectID: String?) {
         self.boardGameService = boardGameService
@@ -84,7 +84,7 @@ public extension DetailViewModel {
         return "Publisher: " + String(publisher)
     }
 
-    var ispublisherHidden: Bool {
+    var isPublisherHidden: Bool {
         publisher.isEmpty ? true : false
     }
 
