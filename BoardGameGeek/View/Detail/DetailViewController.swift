@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController, ViewModelProtocol {
 
     // MARK: - properties
 
@@ -32,17 +32,14 @@ final class DetailViewController: UIViewController {
 
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
 
-    private var detailViewModel: DetailViewModel!
+    var viewModel: DetailViewModel!
     private var isLearnMoreButtonTapped: Bool = false
-
-    public var objectID: String?
 
     // MARK: - ViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureViewModel()
         fetchGameDetails()
         configureStyle()
     }
@@ -90,18 +87,13 @@ private extension DetailViewController {
         maximumPlayingTimeLabel.textColor = .secondaryTitleColor
     }
 
-    func configureViewModel() {
-        detailViewModel = DetailViewModel(boardGameService: BoardGameService(parser: DetailParser()))
-    }
-
     func fetchGameDetails() {
         Task { [weak self] in
             do {
                 self?.activityIndicatorView.startAnimating()
                 navigationItem.hidesBackButton = true
 
-                guard let objectID = objectID else { return }
-                try await detailViewModel.getGameDetails(objectID: objectID)
+                try await viewModel.getGameDetails()
                 showDetails()
 
                 self?.activityIndicatorView.stopAnimating()
@@ -115,31 +107,31 @@ private extension DetailViewController {
     }
 
     func showDetails() {
-        nameLabel.text = detailViewModel.name
-        yearLabel.text = detailViewModel.year
-        descriptionLabel.text = detailViewModel.description
+        nameLabel.text = viewModel.name
+        yearLabel.text = viewModel.year
+        descriptionLabel.text = viewModel.description
         descriptionLabel.numberOfLines = 2
         descriptionLabel.lineBreakMode = .byTruncatingTail
         learnMoreButton.isHidden = false
 
-        maximumPlayerLabel.text = detailViewModel.maxPlayer
-        maximumPlayerLabel.isHidden = detailViewModel.isMaxPlayerHidden
-        minimumPlayerLabel.text = detailViewModel.minPlayer
-        minimumPlayerLabel.isHidden = detailViewModel.isMinPlayerHidden
+        maximumPlayerLabel.text = viewModel.maxPlayer
+        maximumPlayerLabel.isHidden = viewModel.isMaxPlayerHidden
+        minimumPlayerLabel.text = viewModel.minPlayer
+        minimumPlayerLabel.isHidden = viewModel.isMinPlayerHidden
 
-        categoryLabel.text = detailViewModel.category
-        categoryLabel.isHidden = detailViewModel.isCategoryHidden
-        publisherLabel.text = detailViewModel.publisher
-        publisherLabel.isHidden = detailViewModel.ispublisherHidden
+        categoryLabel.text = viewModel.category
+        categoryLabel.isHidden = viewModel.isCategoryHidden
+        publisherLabel.text = viewModel.publisher
+        publisherLabel.isHidden = viewModel.ispublisherHidden
 
-        ageLabel.text = detailViewModel.age
-        ageLabel.isHidden = detailViewModel.isAgeHidden
-        playingTimeLabel.text = detailViewModel.playingTime
-        playingTimeLabel.isHidden = detailViewModel.isPlayingTimeHidden
-        minimumPlayingTimeLabel.text = detailViewModel.minimumPlayingTime
-        minimumPlayingTimeLabel.isHidden = detailViewModel.isMinimumPlayingTimeHidden
-        maximumPlayingTimeLabel.text = detailViewModel.maximumPlayingTime
-        maximumPlayingTimeLabel.isHidden = detailViewModel.ismMaximumPlayingTimeHidden
+        ageLabel.text = viewModel.age
+        ageLabel.isHidden = viewModel.isAgeHidden
+        playingTimeLabel.text = viewModel.playingTime
+        playingTimeLabel.isHidden = viewModel.isPlayingTimeHidden
+        minimumPlayingTimeLabel.text = viewModel.minimumPlayingTime
+        minimumPlayingTimeLabel.isHidden = viewModel.isMinimumPlayingTimeHidden
+        maximumPlayingTimeLabel.text = viewModel.maximumPlayingTime
+        maximumPlayingTimeLabel.isHidden = viewModel.ismMaximumPlayingTimeHidden
 
         showImage()
     }
@@ -147,11 +139,11 @@ private extension DetailViewController {
     func showImage() {
         Task { [weak self] in
             do {
-                if let imageURL = detailViewModel.imageURL {
-                   let imageData = try await detailViewModel.getImageData(url: imageURL)
+                if let imageURL = viewModel.imageURL {
+                   let imageData = try await viewModel.getImageData(url: imageURL)
                     self?.imageView.image = UIImage(data: imageData)
-                    self?.imageView.isHidden = detailViewModel.isImageHidden
-                    imageContainerView.isHidden = detailViewModel.isImageHidden
+                    self?.imageView.isHidden = viewModel.isImageHidden
+                    imageContainerView.isHidden = viewModel.isImageHidden
                 }
             } catch {
                 self?.showError(error)

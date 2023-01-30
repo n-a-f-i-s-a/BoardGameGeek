@@ -12,32 +12,36 @@ final public class DetailViewModel {
     // MARK: - properties
 
     private let boardGameService: BoardGameServiceProtocol
+    private let objectID: String?
     var boardGameDetails: BoardGameDetails?
 
-    init(boardGameService: BoardGameServiceProtocol) {
+    init(boardGameService: BoardGameServiceProtocol, objectID: String?) {
         self.boardGameService = boardGameService
+        self.objectID = objectID
     }
     
 }
 
 public extension DetailViewModel {
 
-    func getGameDetails(objectID: String) async throws {
-        let baseURL = "https://api.geekdo.com/xmlapi/boardgame/"
+    func getGameDetails() async throws {
+        if let objectID = objectID {
+            let baseURL = "https://api.geekdo.com/xmlapi/boardgame/"
 
-        guard let urlString = (baseURL + objectID).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: urlString)
-        else {
-            throw BoardGameService.NetworkError.badURL
-        }
-
-        do {
-            let result = try await boardGameService.getData(url: url)
-            if case let .detail(boardGameDetails) = result {
-                self.boardGameDetails = boardGameDetails
+            guard let urlString = (baseURL + objectID).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                  let url = URL(string: urlString)
+            else {
+                throw BoardGameService.NetworkError.badURL
             }
-        } catch {
-            throw error
+
+            do {
+                let result = try await boardGameService.getData(url: url)
+                if case let .detail(boardGameDetails) = result {
+                    self.boardGameDetails = boardGameDetails
+                }
+            } catch {
+                throw error
+            }
         }
     }
 

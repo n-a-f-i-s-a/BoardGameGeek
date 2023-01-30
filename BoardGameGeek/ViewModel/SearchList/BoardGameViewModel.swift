@@ -28,6 +28,10 @@ final public class BoardGameViewModel {
         case empty
     }
 
+    enum PushedViewModel {
+        case detail(DetailViewModel)
+    }
+
     // MARK: - properties
 
     private let boardGameService: BoardGameServiceProtocol
@@ -67,9 +71,15 @@ extension BoardGameViewModel {
         }
     }
 
-    func selectItem(row: Int) -> String? {
+    func selectItem(row: Int) -> PushedViewModel? {
         if boardGames.indices.contains(row) {
-            return boardGames[row].objectid
+            return
+                .detail(
+                    DetailViewModel(
+                        boardGameService: BoardGameService(parser: DetailParser()),
+                        objectID: boardGames[row].objectid
+                    )
+                )
         }
 
         return nil
