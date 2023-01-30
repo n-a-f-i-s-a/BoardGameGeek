@@ -24,7 +24,10 @@ public extension DetailViewModel {
 
     func getGameDetails(objectID: String) async throws {
         let baseURL = "https://api.geekdo.com/xmlapi/boardgame/"
-        guard let url = URL(string: baseURL + objectID) else {
+
+        guard let urlString = (baseURL + objectID).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+              let url = URL(string: urlString)
+        else {
             throw BoardGameService.NetworkError.badURL
         }
 
