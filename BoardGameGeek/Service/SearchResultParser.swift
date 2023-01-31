@@ -53,7 +53,7 @@ extension SearchResultParser:  XMLParserDelegate {
                         BoardGame(
                             objectid: val,
                             name: "",
-                            yearPublished: 0
+                            yearPublished: nil
                         )
                     )
                 }
@@ -71,7 +71,9 @@ extension SearchResultParser:  XMLParserDelegate {
         if elementName == "name" {
             boardGames[boardGames.count - 1].name = currentValue
         } else if elementName == "yearpublished" {
-            boardGames[boardGames.count - 1].yearPublished = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGames[boardGames.count - 1].yearPublished = Int(currentValue)
+            }
         }
         currentValue = ""
     }

@@ -10,5 +10,5 @@ import Foundation
 struct BoardGame: Hashable {
     var objectid: String
     var name: String
-    var yearPublished: Int
+    var yearPublished: Int?
 }

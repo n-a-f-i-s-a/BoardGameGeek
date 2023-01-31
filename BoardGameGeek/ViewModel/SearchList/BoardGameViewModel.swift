@@ -56,7 +56,8 @@ extension BoardGameViewModel {
                 if boardGames.isEmpty && state != .idle {
                     state = .empty
                 } else {
-                    self.boardGames = boardGames.sorted(by: { $0.yearPublished > $1.yearPublished })
+                    
+                    self.boardGames = boardGames.sorted(by: { $0.yearPublished ?? .min > $1.yearPublished ?? .min })
                     state = .loaded
                 }
             }
@@ -83,10 +84,11 @@ extension BoardGameViewModel {
 
 extension BoardGameViewModel {
 
-    func getYear(boardGame: BoardGame) -> String {
-        boardGame.yearPublished == 0
-        ? ""
-        : "Year Published: " + String(boardGame.yearPublished)
+    func getYear(boardGame: BoardGame) -> String? {
+        if let yearPublished = boardGame.yearPublished {
+            return "Year Published: " + String(yearPublished)
+        }
+        return nil
     }
 
 }

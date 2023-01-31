@@ -39,7 +39,7 @@ final class BoardGameService {
 
     // MARK: - properties
 
-    var parser: ParserProtocol
+    private var parser: ParserProtocol
 
     init(parser: ParserProtocol) {
         self.parser = parser
