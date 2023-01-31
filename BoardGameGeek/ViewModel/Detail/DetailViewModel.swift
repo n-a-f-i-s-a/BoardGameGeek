@@ -15,7 +15,10 @@ final public class DetailViewModel {
     private let objectID: String?
     private var boardGameDetails: BoardGameDetails?
 
-    init(boardGameService: BoardGameServiceProtocol, objectID: String?) {
+    init(
+        boardGameService: BoardGameServiceProtocol,
+        objectID: String?
+    ) {
         self.boardGameService = boardGameService
         self.objectID = objectID
     }
@@ -28,21 +31,15 @@ public extension DetailViewModel {
         if let objectID = objectID {
             let baseURL = "https://api.geekdo.com/xmlapi/boardgame/"
 
-            guard let urlString = (baseURL + objectID).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-                  let url = URL(string: urlString)
-            else {
-                throw BoardGameService.NetworkError.badURL
-            }
-
             do {
-                let result = try await boardGameService.getData(url: url)
+                let result = try await boardGameService.getData(urlString: baseURL + objectID)
                 if case let .detail(boardGameDetails) = result {
                     self.boardGameDetails = boardGameDetails
                 }
             } catch {
                 throw error
             }
-        }
+        } 
     }
 
     func getImageData(url: URL) async throws -> Data {
@@ -151,7 +148,7 @@ public extension DetailViewModel {
         return "Max Playing Time: " + String(maximumPlayingTime)
     }
 
-    var ismMaximumPlayingTimeHidden: Bool {
+    var isMaximumPlayingTimeHidden: Bool {
         maximumPlayingTime.isEmpty ? true : false
     }
 

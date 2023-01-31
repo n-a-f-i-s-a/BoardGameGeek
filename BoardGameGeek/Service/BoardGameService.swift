@@ -69,9 +69,15 @@ private extension BoardGameService {
 
 extension BoardGameService: BoardGameServiceProtocol {
 
-    func getData(url: URL) async throws -> Result {
+    func getData(urlString: String) async throws -> Result {
         let networkTask = Task { [weak self] () -> Result in
             if Task.isCancelled { return .empty }
+
+            guard let urlString = (urlString).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+                  let url = URL(string: urlString)
+            else {
+                throw BoardGameService.NetworkError.badURL
+            }
 
             let session = URLSession.shared
             let (data, response) = try await session.data(from: url)

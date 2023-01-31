@@ -131,7 +131,7 @@ private extension DetailViewController {
         minimumPlayingTimeLabel.text = viewModel.minimumPlayingTime
         minimumPlayingTimeLabel.isHidden = viewModel.isMinimumPlayingTimeHidden
         maximumPlayingTimeLabel.text = viewModel.maximumPlayingTime
-        maximumPlayingTimeLabel.isHidden = viewModel.ismMaximumPlayingTimeHidden
+        maximumPlayingTimeLabel.isHidden = viewModel.isMaximumPlayingTimeHidden
 
         showImage()
     }

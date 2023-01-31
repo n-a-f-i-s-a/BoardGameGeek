@@ -50,14 +50,8 @@ extension BoardGameViewModel {
     func getGames(searchString: String) async throws {
         let baseURL = "https://api.geekdo.com/xmlapi/search?search="
 
-        guard let urlString = (baseURL + searchString).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-              let url = URL(string: urlString)
-        else {
-            throw BoardGameService.NetworkError.badURL
-        }
-
         do {
-            let result = try await boardGameService.getData(url: url)
+            let result = try await boardGameService.getData(urlString: baseURL + searchString)
             if case let .list(boardGames) = result {
                 if boardGames.isEmpty && state != .idle {
                     state = .empty
