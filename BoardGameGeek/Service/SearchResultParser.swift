@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// A parser for parsing the search result fetched from an API
+
 final class SearchResultParser: NSObject {
 
     // MARK: - properties
@@ -21,7 +23,13 @@ final class SearchResultParser: NSObject {
 }
 
 extension SearchResultParser: ParserProtocol {
-    
+
+    /// Returns the parsed result
+    ///
+    /// - Parameters:
+    ///    - data: The data fetched from an API.
+    /// - Returns: Parsed results.
+
     func parseResult(data: Data) -> BoardGameService.Result {
         var parser = XMLParser()
         parser = XMLParser(data: data)

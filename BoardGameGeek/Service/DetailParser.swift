@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// A parser for parsing the detail result fetched from an API
+
 final class DetailParser: NSObject {
 
     // MARK: - properties
@@ -35,6 +37,12 @@ final class DetailParser: NSObject {
 }
 
 extension DetailParser: ParserProtocol {
+
+    /// Returns the parsed result
+    ///
+    /// - Parameters:
+    ///    - data: The data fetched from an API.
+    /// - Returns: Parsed results.
 
     func parseResult(data: Data) -> BoardGameService.Result {
         var parser = XMLParser()
