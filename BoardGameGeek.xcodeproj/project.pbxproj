@@ -16,6 +16,9 @@
 		7803031E2986161900A0BA35 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803031D2986161900A0BA35 /* Colors.swift */; };
 		7803032129876D9000A0BA35 /* Alert+showError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803032029876D9000A0BA35 /* Alert+showError.swift */; };
 		78030324298775D700A0BA35 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78030323298775D700A0BA35 /* ViewModelProtocol.swift */; };
+		7803032E29878D3B00A0BA35 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803032D29878D3B00A0BA35 /* DetailViewModelTests.swift */; };
+		780303352987908A00A0BA35 /* MockBoardGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303342987908A00A0BA35 /* MockBoardGameService.swift */; };
+		780303372988839A00A0BA35 /* BoardGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303362988839A00A0BA35 /* BoardGameViewModelTests.swift */; };
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
 		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
@@ -35,6 +38,16 @@
 		78E3EC762983836C00A56B65 /* StoryboardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC752983836C00A56B65 /* StoryboardProtocol.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		7803032F29878D3B00A0BA35 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78E3EC38297FA56600A56B65 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 78E3EC3F297FA56600A56B65;
+			remoteInfo = BoardGameGeek;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7803030F2984DB9A00A0BA35 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		780303112984FC2000A0BA35 /* EmptyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTableViewCell.swift; sourceTree = "<group>"; };
@@ -45,6 +58,10 @@
 		7803031D2986161900A0BA35 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7803032029876D9000A0BA35 /* Alert+showError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+showError.swift"; sourceTree = "<group>"; };
 		78030323298775D700A0BA35 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		7803032B29878D3B00A0BA35 /* BoardGameGeekTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoardGameGeekTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7803032D29878D3B00A0BA35 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
+		780303342987908A00A0BA35 /* MockBoardGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBoardGameService.swift; sourceTree = "<group>"; };
+		780303362988839A00A0BA35 /* BoardGameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameViewModelTests.swift; sourceTree = "<group>"; };
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +84,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7803032829878D3B00A0BA35 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78E3EC3D297FA56600A56B65 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -87,10 +111,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7803032C29878D3B00A0BA35 /* BoardGameGeekTests */ = {
+			isa = PBXGroup;
+			children = (
+				780303362988839A00A0BA35 /* BoardGameViewModelTests.swift */,
+				7803032D29878D3B00A0BA35 /* DetailViewModelTests.swift */,
+				780303342987908A00A0BA35 /* MockBoardGameService.swift */,
+			);
+			path = BoardGameGeekTests;
+			sourceTree = "<group>";
+		};
 		78E3EC37297FA56600A56B65 = {
 			isa = PBXGroup;
 			children = (
 				78E3EC42297FA56600A56B65 /* BoardGameGeek */,
+				7803032C29878D3B00A0BA35 /* BoardGameGeekTests */,
 				78E3EC41297FA56600A56B65 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				78E3EC40297FA56600A56B65 /* BoardGameGeek.app */,
+				7803032B29878D3B00A0BA35 /* BoardGameGeekTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,6 +254,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7803032A29878D3B00A0BA35 /* BoardGameGeekTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7803033129878D3B00A0BA35 /* Build configuration list for PBXNativeTarget "BoardGameGeekTests" */;
+			buildPhases = (
+				7803032729878D3B00A0BA35 /* Sources */,
+				7803032829878D3B00A0BA35 /* Frameworks */,
+				7803032929878D3B00A0BA35 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7803033029878D3B00A0BA35 /* PBXTargetDependency */,
+			);
+			name = BoardGameGeekTests;
+			productName = BoardGameGeekTests;
+			productReference = 7803032B29878D3B00A0BA35 /* BoardGameGeekTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		78E3EC3F297FA56600A56B65 /* BoardGameGeek */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 78E3EC54297FA56700A56B65 /* Build configuration list for PBXNativeTarget "BoardGameGeek" */;
@@ -245,6 +299,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					7803032A29878D3B00A0BA35 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 78E3EC3F297FA56600A56B65;
+					};
 					78E3EC3F297FA56600A56B65 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -264,11 +322,19 @@
 			projectRoot = "";
 			targets = (
 				78E3EC3F297FA56600A56B65 /* BoardGameGeek */,
+				7803032A29878D3B00A0BA35 /* BoardGameGeekTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7803032929878D3B00A0BA35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78E3EC3E297FA56600A56B65 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -282,6 +348,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7803032729878D3B00A0BA35 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				780303352987908A00A0BA35 /* MockBoardGameService.swift in Sources */,
+				780303372988839A00A0BA35 /* BoardGameViewModelTests.swift in Sources */,
+				7803032E29878D3B00A0BA35 /* DetailViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		78E3EC3C297FA56600A56B65 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -314,6 +390,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		7803033029878D3B00A0BA35 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78E3EC3F297FA56600A56B65 /* BoardGameGeek */;
+			targetProxy = 7803032F29878D3B00A0BA35 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		78E3EC49297FA56600A56B65 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -334,6 +418,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7803033229878D3B00A0BA35 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 42KMS8LBB5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Nafisa.BoardGameGeekTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoardGameGeek.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoardGameGeek";
+			};
+			name = Debug;
+		};
+		7803033329878D3B00A0BA35 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 42KMS8LBB5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Nafisa.BoardGameGeekTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoardGameGeek.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BoardGameGeek";
+			};
+			name = Release;
+		};
 		78E3EC52297FA56700A56B65 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -507,6 +627,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7803033129878D3B00A0BA35 /* Build configuration list for PBXNativeTarget "BoardGameGeekTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7803033229878D3B00A0BA35 /* Debug */,
+				7803033329878D3B00A0BA35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		78E3EC3B297FA56600A56B65 /* Build configuration list for PBXProject "BoardGameGeek" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

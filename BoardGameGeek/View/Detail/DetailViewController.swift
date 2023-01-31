@@ -122,7 +122,7 @@ private extension DetailViewController {
         categoryLabel.text = viewModel.category
         categoryLabel.isHidden = viewModel.isCategoryHidden
         publisherLabel.text = viewModel.publisher
-        publisherLabel.isHidden = viewModel.ispublisherHidden
+        publisherLabel.isHidden = viewModel.isPublisherHidden
 
         ageLabel.text = viewModel.age
         ageLabel.isHidden = viewModel.isAgeHidden
@@ -131,7 +131,7 @@ private extension DetailViewController {
         minimumPlayingTimeLabel.text = viewModel.minimumPlayingTime
         minimumPlayingTimeLabel.isHidden = viewModel.isMinimumPlayingTimeHidden
         maximumPlayingTimeLabel.text = viewModel.maximumPlayingTime
-        maximumPlayingTimeLabel.isHidden = viewModel.ismMaximumPlayingTimeHidden
+        maximumPlayingTimeLabel.isHidden = viewModel.isMaximumPlayingTimeHidden
 
         showImage()
     }

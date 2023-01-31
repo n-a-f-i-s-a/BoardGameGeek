@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// A parser for parsing the detail result fetched from an API
+
 final class DetailParser: NSObject {
 
     // MARK: - properties
@@ -19,22 +21,28 @@ final class DetailParser: NSObject {
         boardGameDetails = BoardGameDetails(
             objectid: "",
             name: "",
-            yearPublished: "",
-            minPlayer: 0,
-            maxPlayer: 0,
-            playingTime: 0,
-            minPlayTime: 0,
-            maxPlayTime: 0,
-            age: 0,
-            description: "",
-            boardGameCategory: "",
-            boardGamePublisher: "",
-            imageURL: ""
+            yearPublished: nil,
+            minPlayer: nil,
+            maxPlayer: nil,
+            playingTime: nil,
+            minPlayTime: nil,
+            maxPlayTime: nil,
+            age: nil,
+            description: nil,
+            boardGameCategory: nil,
+            boardGamePublisher: nil,
+            imageURL: nil
         )
     }
 }
 
 extension DetailParser: ParserProtocol {
+
+    /// Returns the parsed result
+    ///
+    /// - Parameters:
+    ///    - data: The data fetched from an API.
+    /// - Returns: Parsed results.
 
     func parseResult(data: Data) -> BoardGameService.Result {
         var parser = XMLParser()
@@ -72,29 +80,53 @@ extension DetailParser:  XMLParserDelegate {
     ) {
         switch elementName {
         case "yearpublished":
-            boardGameDetails.yearPublished = currentValue
+            if currentValue.isEmpty == false {
+                boardGameDetails.yearPublished = currentValue
+            }
         case "minplayers":
-            boardGameDetails.minPlayer = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGameDetails.minPlayer = Int(currentValue)
+            }
         case "maxplayers":
-            boardGameDetails.maxPlayer = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGameDetails.maxPlayer = Int(currentValue)
+            }
         case "playingtime":
-            boardGameDetails.playingTime = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGameDetails.playingTime = Int(currentValue)
+            }
         case "minplaytime":
-            boardGameDetails.minPlayTime = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGameDetails.minPlayTime = Int(currentValue)
+            }
         case "maxplaytime":
-            boardGameDetails.maxPlayTime = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGameDetails.maxPlayTime = Int(currentValue)
+            }
         case "age":
-            boardGameDetails.age = Int(currentValue) ?? 0
+            if currentValue.isEmpty == false {
+                boardGameDetails.age = Int(currentValue)
+            }
         case "name":
-            boardGameDetails.name = currentValue
+            if currentValue.isEmpty == false {
+                boardGameDetails.name = currentValue
+            }
         case "description":
-            boardGameDetails.description = currentValue
+            if currentValue.isEmpty == false {
+                boardGameDetails.description = currentValue
+            }
         case "boardgamepublisher":
-            boardGameDetails.boardGamePublisher = currentValue
+            if currentValue.isEmpty == false {
+                boardGameDetails.boardGamePublisher = currentValue
+            }
         case "boardgamecategory":
-            boardGameDetails.boardGameCategory = currentValue
+            if currentValue.isEmpty == false {
+                boardGameDetails.boardGameCategory = currentValue
+            }
         case "image":
-            boardGameDetails.imageURL = currentValue
+            if currentValue.isEmpty == false {
+                boardGameDetails.imageURL = currentValue
+            }
         default:
             break
         }

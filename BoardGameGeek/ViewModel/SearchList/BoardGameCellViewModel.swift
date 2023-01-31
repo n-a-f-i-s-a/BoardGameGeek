@@ -12,9 +12,9 @@ final public class BoardGameCellViewModel {
     // MARK: - properties
 
     var title: String
-    var year: String
+    var year: String?
 
-    init(title: String, year: String) {
+    init(title: String, year: String?) {
         self.title = title
         self.year = year
     }
@@ -24,7 +24,7 @@ final public class BoardGameCellViewModel {
 public extension BoardGameCellViewModel {
 
     var isYearHidden: Bool {
-        year.isEmpty ? true : false
+        year == nil ? true : false
     }
 
 }
