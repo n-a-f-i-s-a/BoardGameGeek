@@ -13,11 +13,15 @@ final class BoardGameViewModelTests: XCTestCase {
     private var testSubject: BoardGameViewModel!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
+
         testSubject = BoardGameViewModel(boardGameService: MockBoardGameService())
     }
 
     override func tearDownWithError() throws {
         testSubject = nil
+
+        try super.tearDownWithError()
     }
 
     func testGetGames() async throws {

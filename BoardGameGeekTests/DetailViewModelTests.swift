@@ -13,6 +13,8 @@ final class DetailViewModelTests: XCTestCase {
     private var testSubject: DetailViewModel!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
+
         testSubject = DetailViewModel(
             boardGameService: MockBoardGameService(),
             objectID: "1234"
@@ -21,6 +23,8 @@ final class DetailViewModelTests: XCTestCase {
 
     override func tearDownWithError() throws {
         testSubject = nil
+
+        try super.tearDownWithError()
     }
 
     func testFetchDetails() async throws {
@@ -55,6 +59,26 @@ final class DetailViewModelTests: XCTestCase {
         XCTAssertEqual(testSubject.maximumPlayingTime, "Max Playing Time: 120")
         XCTAssertFalse(testSubject.isMaximumPlayingTimeHidden)
 
+        XCTAssertNil(testSubject.imageURL)
+    }
+
+    func testFetchDetailsWithOnlyName() async throws {
+        testSubject = DetailViewModel(
+            boardGameService: MockBoardGameService(),
+            objectID: "666"
+        )
+
+        let _ = try await testSubject.getGameDetails()
+
+        XCTAssertEqual(testSubject.name, "Ticket To Ride")
+        XCTAssertTrue(testSubject.isCategoryHidden)
+        XCTAssertTrue(testSubject.isPublisherHidden)
+        XCTAssertTrue(testSubject.isMinPlayerHidden)
+        XCTAssertTrue(testSubject.isMaxPlayerHidden)
+        XCTAssertTrue(testSubject.isAgeHidden)
+        XCTAssertTrue(testSubject.isPlayingTimeHidden)
+        XCTAssertTrue(testSubject.isMinimumPlayingTimeHidden)
+        XCTAssertTrue(testSubject.isMaximumPlayingTimeHidden)
         XCTAssertNil(testSubject.imageURL)
     }
 

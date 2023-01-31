@@ -33,7 +33,16 @@ final class MockBoardGameService: BoardGameServiceProtocol {
 private extension MockBoardGameService {
 
     func makeData(urlString: String) -> BoardGameGeek.BoardGameService.Result {
-        urlString.contains("list") ? listData : detailData
+
+        if urlString.contains("list") {
+            return listData
+        } else if urlString.contains("1234") {
+            return detailData
+        } else if urlString.contains("666") {
+            return detailDataWithOnlyName
+        } else {
+            return .empty
+        }
     }
 
     var detailData: BoardGameGeek.BoardGameService.Result {
@@ -52,6 +61,26 @@ private extension MockBoardGameService {
                 boardGameCategory: "Trains",
                 boardGamePublisher: "Rebel",
                 imageURL: ""
+            )
+        )
+    }
+
+    var detailDataWithOnlyName: BoardGameGeek.BoardGameService.Result {
+        BoardGameService.Result.detail(
+            BoardGameDetails(
+                objectid: "666",
+                name: "Ticket To Ride",
+                yearPublished: nil,
+                minPlayer: nil,
+                maxPlayer: nil,
+                playingTime: nil,
+                minPlayTime: nil,
+                maxPlayTime: nil,
+                age: nil,
+                description: nil,
+                boardGameCategory: nil,
+                boardGamePublisher: nil,
+                imageURL: nil
             )
         )
     }
