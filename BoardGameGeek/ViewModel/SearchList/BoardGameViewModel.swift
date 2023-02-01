@@ -98,13 +98,23 @@ extension BoardGameViewModel {
 
     func selectItem(row: Int) -> PushedViewModel? {
         if boardGames.indices.contains(row) {
-            return
-                .detail(
+            if ProcessInfo.processInfo.arguments.contains("Testing") {
+                return .detail(
                     DetailViewModel(
-                        boardGameService: BoardGameService(parser: DetailParser()),
+                        boardGameService: MockBoardGameService(),
                         boardGame: boardGames[row]
                     )
                 )
+            } else {
+                return
+                    .detail(
+                        DetailViewModel(
+                            boardGameService: BoardGameService(parser: DetailParser()),
+                            boardGame: boardGames[row]
+                        )
+                    )
+            }
+
         }
 
         return nil

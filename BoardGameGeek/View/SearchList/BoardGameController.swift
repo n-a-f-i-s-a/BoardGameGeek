@@ -53,7 +53,11 @@ final class BoardGameViewController: UIViewController, ViewModelProtocol {
 private extension BoardGameViewController {
 
     func configureViewModel() {
-        viewModel = BoardGameViewModel(boardGameService: BoardGameService(parser: SearchResultParser()))
+        if ProcessInfo.processInfo.arguments.contains("Testing") {
+            viewModel = BoardGameViewModel(boardGameService: MockBoardGameService())
+        } else {
+            viewModel = BoardGameViewModel(boardGameService: BoardGameService(parser: SearchResultParser()))
+        }
     }
 
     func configureTableView() {
