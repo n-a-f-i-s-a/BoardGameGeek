@@ -106,10 +106,9 @@ extension BoardGameService: BoardGameServiceProtocol {
                 throw BoardGameService.NetworkError.badURL
             }
 
-            let session = URLSession.shared
-            let (data, response) = try await session.data(from: url)
-
+            let (data, response) = try await getResponse(url: url)
             try verifyResponse(response: response)
+            
             guard let result = self?.parser.parseResult(data: data) else { return .empty }
             return result
         }
@@ -125,9 +124,20 @@ extension BoardGameService: BoardGameServiceProtocol {
     ///  - Returns: Data fetched from the API.
 
     func getImageData(url: URL) async throws -> Data {
-        let session = URLSession.shared
-        let (data, _) = try await session.data(from: url)
+        let (data, _) = try await getResponse(url: url)
         return data
+    }
+
+    /// Returns the data fetched from an API.
+    ///
+    /// - Parameters:
+    ///     - url: The url of the API to be called.
+    ///  - Returns: Data fetched from the API.
+
+    private func getResponse(url: URL) async throws -> (Data, URLResponse) {
+        let session = URLSession.shared
+        let (data, response) = try await session.data(from: url)
+        return (data, response)
     }
 
 }

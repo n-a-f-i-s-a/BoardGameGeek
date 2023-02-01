@@ -9,7 +9,7 @@ import Foundation
 
 /// Board Game details.
 
-struct BoardGameDetails {
+struct BoardGameDetails: Hashable {
     /// The game Identifier
     var objectid: String
     /// The name of a board game
