@@ -6,7 +6,6 @@
 //
 
 import Foundation
-@testable import BoardGameGeek
 
 final class MockBoardGameService: BoardGameServiceProtocol {
 
