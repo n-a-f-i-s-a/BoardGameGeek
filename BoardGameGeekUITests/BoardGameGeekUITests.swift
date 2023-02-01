@@ -25,11 +25,11 @@ final class BoardGameGeekUITests: XCTestCase {
     }
 
     func testExample() throws {
-        search()
+        searchAGame()
         tapAGame()
     }
 
-    private func search() {
+    private func searchAGame() {
         let searchField = app.navigationBars["BoardGameGeek.BoardGameView"].searchFields["Search a boardgame"]
 
         if searchField.waitForExistence(timeout: 1.0) {
@@ -49,20 +49,21 @@ final class BoardGameGeekUITests: XCTestCase {
         if cell.waitForExistence(timeout: 1.0) {
             cell.tap()
 
-            if app.staticTexts["Ticket To Ride"].waitForExistence(timeout: 1.0) {
-                XCTAssertTrue(app.staticTexts["2022"].exists)
-                XCTAssertTrue(app.staticTexts["Min Players: 2"].exists)
-                XCTAssertTrue(app.staticTexts["Max Players: 4"].exists)
+            if app.staticTexts["name"].waitForExistence(timeout: 1.0) {
+                XCTAssertTrue(app.staticTexts["year"].exists)
+                XCTAssertTrue(app.staticTexts["minPlayer"].exists)
+                XCTAssertTrue(app.staticTexts["maxPlayer"].exists)
 
-                XCTAssertTrue(app.staticTexts["Category: Trains"].exists)
-                XCTAssertTrue(app.staticTexts["Publisher: Rebel"].exists)
+                XCTAssertTrue(app.staticTexts["category"].exists)
+                XCTAssertTrue(app.staticTexts["publisher"].exists)
 
                 app.swipeUp()
-                XCTAssertTrue(app.buttons["Learn More"].exists)
-                XCTAssertTrue(app.staticTexts["Age: 8"].exists)
-                XCTAssertTrue(app.staticTexts["Playing Time: 60"].exists)
-                XCTAssertTrue(app.staticTexts["Min Playing Time: 60"].exists)
-                XCTAssertTrue(app.staticTexts["Max Playing Time: 120"].exists)
+                XCTAssertTrue(app.staticTexts["description"].exists)
+                XCTAssertTrue(app.buttons["learnMore"].exists)
+                XCTAssertTrue(app.staticTexts["age"].exists)
+                XCTAssertTrue(app.staticTexts["playingTime"].exists)
+                XCTAssertTrue(app.staticTexts["minPlayingTime"].exists)
+                XCTAssertTrue(app.staticTexts["maxPlayingTime"].exists)
             }
         }
     }
