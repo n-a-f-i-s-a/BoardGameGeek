@@ -102,7 +102,7 @@ extension BoardGameViewModel {
                 .detail(
                     DetailViewModel(
                         boardGameService: BoardGameService(parser: DetailParser()),
-                        objectID: boardGames[row].objectid
+                        boardGame: boardGames[row]
                     )
                 )
         }

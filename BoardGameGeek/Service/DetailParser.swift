@@ -19,7 +19,7 @@ final class DetailParser: NSObject {
     override init() {
         currentValue = ""
         boardGameDetails = BoardGameDetails(
-            objectid: "",
+            objectID: "",
             name: "",
             yearPublished: nil,
             minPlayer: nil,
@@ -67,7 +67,7 @@ extension DetailParser:  XMLParserDelegate {
         attributes attributeDict: [String : String] = [:]) {
             for (key, val) in attributeDict {
                 if (key == "objectid" && elementName == "boardgame") {
-                    boardGameDetails.objectid = val
+                    boardGameDetails.objectID = val
                 }
             }
         }

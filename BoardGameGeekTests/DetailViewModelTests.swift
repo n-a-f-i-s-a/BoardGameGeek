@@ -17,7 +17,7 @@ final class DetailViewModelTests: XCTestCase {
 
         testSubject = DetailViewModel(
             boardGameService: MockBoardGameService(),
-            objectID: "1234"
+            boardGame: BoardGame(objectID: "1234", name: "Ticket to Ride")
         )
     }
 
@@ -65,7 +65,7 @@ final class DetailViewModelTests: XCTestCase {
     func testFetchDetailsWithOnlyName() async throws {
         testSubject = DetailViewModel(
             boardGameService: MockBoardGameService(),
-            objectID: "666"
+            boardGame: BoardGame(objectID: "666", name: "Ticket to Ride")
         )
 
         let _ = try await testSubject.getGameDetails()

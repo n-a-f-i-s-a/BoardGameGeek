@@ -14,7 +14,7 @@ final public class DetailViewModel {
     // MARK: - properties
 
     private let boardGameService: BoardGameServiceProtocol
-    private let objectID: String?
+    private let boardGame: BoardGame?
     private var boardGameDetails: BoardGameDetails?
 
     /// Initializes a detail view model.
@@ -26,10 +26,10 @@ final public class DetailViewModel {
 
     init(
         boardGameService: BoardGameServiceProtocol,
-        objectID: String?
+        boardGame: BoardGame?
     ) {
         self.boardGameService = boardGameService
-        self.objectID = objectID
+        self.boardGame = boardGame
     }
     
 }
@@ -39,7 +39,7 @@ public extension DetailViewModel {
     /// Fetches the details of a selected board game from the BoardGameGeek API.
 
     func getGameDetails() async throws {
-        if let objectID = objectID {
+        if let objectID = boardGame?.objectID {
             let baseURL = "https://api.geekdo.com/xmlapi/boardgame/"
 
             do {
@@ -72,12 +72,22 @@ public extension DetailViewModel {
 
     /// The name of a board game
     var name: String {
-        boardGameDetails?.name ?? "" // show name fetched from first api
+        boardGameDetails?.name ?? boardGame?.name ?? ""
     }
 
     /// The year the board game was published
     var year: String {
-        boardGameDetails?.yearPublished ?? "" // show year fetched from first api
+        if let boardGameDetails = boardGameDetails,
+            let yearPublished = boardGameDetails.yearPublished {
+            return yearPublished
+        } else {
+            if let boardGame = boardGame,
+               let yearPublished = boardGame.yearPublished {
+            return String(yearPublished)
+            }
+        }
+
+        return ""
     }
 
     /// The description of the board game
