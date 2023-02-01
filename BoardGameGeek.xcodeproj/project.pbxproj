@@ -19,6 +19,7 @@
 		7803032E29878D3B00A0BA35 /* DetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7803032D29878D3B00A0BA35 /* DetailViewModelTests.swift */; };
 		780303352987908A00A0BA35 /* MockBoardGameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303342987908A00A0BA35 /* MockBoardGameService.swift */; };
 		780303372988839A00A0BA35 /* BoardGameViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780303362988839A00A0BA35 /* BoardGameViewModelTests.swift */; };
+		788A46FA2989E64F0040C4B7 /* ParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788A46F92989E64F0040C4B7 /* ParserTests.swift */; };
 		78E3EC44297FA56600A56B65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC43297FA56600A56B65 /* AppDelegate.swift */; };
 		78E3EC46297FA56600A56B65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC45297FA56600A56B65 /* SceneDelegate.swift */; };
 		78E3EC48297FA56600A56B65 /* BoardGameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3EC47297FA56600A56B65 /* BoardGameController.swift */; };
@@ -62,6 +63,7 @@
 		7803032D29878D3B00A0BA35 /* DetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModelTests.swift; sourceTree = "<group>"; };
 		780303342987908A00A0BA35 /* MockBoardGameService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBoardGameService.swift; sourceTree = "<group>"; };
 		780303362988839A00A0BA35 /* BoardGameViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGameViewModelTests.swift; sourceTree = "<group>"; };
+		788A46F92989E64F0040C4B7 /* ParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTests.swift; sourceTree = "<group>"; };
 		78E3EC40297FA56600A56B65 /* BoardGameGeek.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoardGameGeek.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3EC43297FA56600A56B65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E3EC45297FA56600A56B65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				780303362988839A00A0BA35 /* BoardGameViewModelTests.swift */,
 				7803032D29878D3B00A0BA35 /* DetailViewModelTests.swift */,
 				780303342987908A00A0BA35 /* MockBoardGameService.swift */,
+				788A46F92989E64F0040C4B7 /* ParserTests.swift */,
 			);
 			path = BoardGameGeekTests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				788A46FA2989E64F0040C4B7 /* ParserTests.swift in Sources */,
 				780303352987908A00A0BA35 /* MockBoardGameService.swift in Sources */,
 				780303372988839A00A0BA35 /* BoardGameViewModelTests.swift in Sources */,
 				7803032E29878D3B00A0BA35 /* DetailViewModelTests.swift in Sources */,
