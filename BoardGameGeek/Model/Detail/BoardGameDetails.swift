@@ -11,7 +11,7 @@ import Foundation
 
 struct BoardGameDetails: Hashable {
     /// The game Identifier
-    var objectid: String
+    var objectID: String
     /// The name of a board game
     var name: String
     /// The year the board game was published

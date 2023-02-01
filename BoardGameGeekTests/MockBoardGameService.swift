@@ -48,7 +48,7 @@ private extension MockBoardGameService {
     var detailData: BoardGameGeek.BoardGameService.Result {
         BoardGameService.Result.detail(
             BoardGameDetails(
-                objectid: "1234",
+                objectID: "1234",
                 name: "Ticket To Ride",
                 yearPublished: "2022",
                 minPlayer: 2,
@@ -68,7 +68,7 @@ private extension MockBoardGameService {
     var detailDataWithOnlyName: BoardGameGeek.BoardGameService.Result {
         BoardGameService.Result.detail(
             BoardGameDetails(
-                objectid: "666",
+                objectID: "666",
                 name: "Ticket To Ride",
                 yearPublished: nil,
                 minPlayer: nil,
@@ -87,8 +87,8 @@ private extension MockBoardGameService {
 
     var listData: BoardGameGeek.BoardGameService.Result {
         let boardGames = [
-            BoardGame(objectid: "1234", name: "Ticket to Ride", yearPublished: 2020),
-            BoardGame(objectid: "2345", name: "Ticket to Ride: Europe", yearPublished: 2022),
+            BoardGame(objectID: "1234", name: "Ticket to Ride", yearPublished: 2020),
+            BoardGame(objectID: "2345", name: "Ticket to Ride: Europe", yearPublished: 2022),
         ]
 
         return BoardGameService.Result.list(boardGames)

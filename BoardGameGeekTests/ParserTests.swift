@@ -26,8 +26,8 @@ final class ParserTests: XCTestCase {
 
         if case let .list(boardGames) = parsedData {
             let expectedResult = [
-                BoardGame(objectid: "1234", name: "Ticket to Ride: Europe", yearPublished: 2020),
-                BoardGame(objectid: "5678", name: "Ticket to Ride", yearPublished: 2022),
+                BoardGame(objectID: "1234", name: "Ticket to Ride: Europe", yearPublished: 2020),
+                BoardGame(objectID: "5678", name: "Ticket to Ride", yearPublished: 2022),
             ]
 
             XCTAssertEqual(boardGames, expectedResult)
@@ -40,7 +40,7 @@ final class ParserTests: XCTestCase {
 
         if case let .detail(boardGameDetails) = parsedData {
             let expectedResult = BoardGameDetails(
-                objectid: "1234",
+                objectID: "1234",
                 name: "Ticket to Ride",
                 yearPublished: "2021",
                 minPlayer: 2,

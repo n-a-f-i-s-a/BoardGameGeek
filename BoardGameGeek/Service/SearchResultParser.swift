@@ -59,7 +59,7 @@ extension SearchResultParser:  XMLParserDelegate {
                 if (key == "objectid") {
                     boardGames.append(
                         BoardGame(
-                            objectid: val,
+                            objectID: val,
                             name: "",
                             yearPublished: nil
                         )
